@@ -2,16 +2,18 @@ package za.ac.cput.kristen.timetable.domain;
 
 
 
+import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by student on 2015/04/13.
  */
+@Entity
 public class Exam implements Serializable
 {
     private Date startTime;
-    private float hours, subjectContribution;
+    private double hours, subjectContribution;
     private String topic;
     private Subject subject;
     private Boolean prac;
@@ -32,11 +34,11 @@ public class Exam implements Serializable
         return startTime;
     }
 
-    public float getHours() {
+    public double getHours() {
         return hours;
     }
 
-    public float getSubjectContribution() {
+    public double getSubjectContribution() {
         return subjectContribution;
     }
 
@@ -55,12 +57,12 @@ public class Exam implements Serializable
     public static class Builder
     {
         private Date startTime;
-        private float hours, subjectContribution;
+        private double hours, subjectContribution;
         private String topic;
         private Subject subject;
         private Boolean prac;
 
-        public Builder(float subjectContribution, String topic, Subject subject)
+        public Builder(double subjectContribution, String topic, Subject subject)
         {
             this.subjectContribution = subjectContribution;
             this.topic = topic;
@@ -73,7 +75,7 @@ public class Exam implements Serializable
             return this;
         }
 
-        public Builder hours(float hours)
+        public Builder hours(double hours)
         {
             this.hours = hours;
             return this;

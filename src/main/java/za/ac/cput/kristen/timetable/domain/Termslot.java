@@ -1,10 +1,12 @@
 package za.ac.cput.kristen.timetable.domain;
 
+import javax.persistence.Entity;
 import java.util.Date;
 
 /**
  * Created by student on 2015/04/13.
  */
+@Entity
 public class Termslot
 {
     private int term;

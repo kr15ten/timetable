@@ -1,11 +1,14 @@
 package za.ac.cput.kristen.timetable.domain;
 
+import javax.persistence.Entity;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by student on 2015/04/13.
  */
+@Entity
 public class Course implements Serializable
 {
     private String courseCode, name, qualification;
@@ -87,6 +90,9 @@ public class Course implements Serializable
 
         public Builder addSubject(Subject sub)
         {
+            if (subjects == null)
+                subjects = new ArrayList<Subject>();
+
             subjects.add(sub);
             return this;
         }
