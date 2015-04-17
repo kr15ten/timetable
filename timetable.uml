@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="-302.0" y="418.0">za.ac.cput.kristen.timetable.domain.Timeslot</node>
+    <node x="65.0" y="-21.0">za.ac.cput.kristen.timetable.domain.Lecturer</node>
+    <node x="-28.0" y="614.0">za.ac.cput.kristen.timetable.domain.Examslot</node>
+    <node x="29.0" y="317.0">za.ac.cput.kristen.timetable.domain.Class</node>
+    <node x="-92.0" y="443.0">za.ac.cput.kristen.timetable.domain.Room</node>
+    <node x="-235.0" y="628.0">za.ac.cput.kristen.timetable.domain.Termslot</node>
+    <node x="-350.0" y="-40.0">za.ac.cput.kristen.timetable.domain.Lesson</node>
+    <node x="385.0" y="-49.0">za.ac.cput.kristen.timetable.domain.Course</node>
+    <node x="388.0" y="291.0">za.ac.cput.kristen.timetable.domain.Subject</node>
+    <node x="186.0" y="507.0">za.ac.cput.kristen.timetable.domain.Student</node>
+    <node x="484.0" y="518.0">za.ac.cput.kristen.timetable.domain.Exam</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="za.ac.cput.kristen.timetable.domain.Class" target="za.ac.cput.kristen.timetable.domain.Student">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="za.ac.cput.kristen.timetable.domain.Lesson" target="za.ac.cput.kristen.timetable.domain.Subject">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="za.ac.cput.kristen.timetable.domain.Lecturer" target="za.ac.cput.kristen.timetable.domain.Subject">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="za.ac.cput.kristen.timetable.domain.Course" target="za.ac.cput.kristen.timetable.domain.Subject">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="za.ac.cput.kristen.timetable.domain.Lesson" target="za.ac.cput.kristen.timetable.domain.Lecturer">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="za.ac.cput.kristen.timetable.domain.Lesson" target="za.ac.cput.kristen.timetable.domain.Class">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="za.ac.cput.kristen.timetable.domain.Exam" target="za.ac.cput.kristen.timetable.domain.Subject">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="za.ac.cput.kristen.timetable.domain.Lesson" target="za.ac.cput.kristen.timetable.domain.Room">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="za.ac.cput.kristen.timetable.domain.Lesson" target="za.ac.cput.kristen.timetable.domain.Timeslot">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="-23.0" y="241.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
