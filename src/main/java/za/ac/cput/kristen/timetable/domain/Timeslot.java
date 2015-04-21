@@ -48,6 +48,14 @@ public class Timeslot implements Serializable
             this.end = end;
         }
 
+        public Builder copy(Timeslot slot)
+        {
+            this.day = slot.day;
+            this.start = slot.start;
+            this.end = slot.end;
+            return this;
+        }
+
         public Timeslot build()
         {
             return new Timeslot(this);

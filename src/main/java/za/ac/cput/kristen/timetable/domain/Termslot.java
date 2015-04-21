@@ -53,6 +53,14 @@ public class Termslot
             return this;
         }
 
+        public Builder copy(Termslot tmslot)
+        {
+            this.term = tmslot.term;
+            this.startDate = tmslot.startDate;
+            this.endDate = tmslot.endDate;
+            return this;
+        }
+
         public Termslot build()
         {
             return new Termslot(this);

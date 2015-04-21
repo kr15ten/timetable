@@ -81,6 +81,17 @@ public class Student implements Serializable
             return this;
         }
 
+        public Builder copy(Student stud)
+        {
+            this.studNo = stud.studNo;
+            this.name = stud.name;
+            this.surname = stud.surname;
+            this.courseCode = stud.courseCode;
+            this.creditsEarned = stud.creditsEarned;
+            this.courseYear = stud.courseYear;
+            return this;
+        }
+
         public Student build()
         {
             return new Student(this);

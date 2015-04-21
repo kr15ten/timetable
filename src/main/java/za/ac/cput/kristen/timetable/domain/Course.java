@@ -109,6 +109,17 @@ public class Course implements Serializable
             return this;
         }
 
+        public Builder copy(Course course)
+        {
+            this.courseCode = course.courseCode;
+            this.credits = course.credits;
+            this.name = course.name;
+            this.qualification = course.qualification;
+            this.subjects = course.subjects;
+            this.years = course.years;
+            return this;
+        }
+
         public Course build()
         {
             return new Course(this);

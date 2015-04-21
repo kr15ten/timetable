@@ -87,6 +87,17 @@ public class Exam implements Serializable
             return this;
         }
 
+        public Builder copy(Exam exam)
+        {
+            this.startTime = exam.startTime;
+            this.hours = exam.hours;
+            this.subjectContribution = exam.subjectContribution;
+            this.topic = exam.topic;
+            this.subject = exam.subject;
+            this.prac = exam.prac;
+            return this;
+        }
+
         public Exam build()
         {
             return new Exam(this);

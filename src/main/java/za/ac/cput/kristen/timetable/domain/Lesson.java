@@ -95,6 +95,18 @@ public class Lesson implements Serializable
             return this;
         }
 
+        public Builder copy(Lesson lesson)
+        {
+            this.slot = lesson.slot;
+            this.lecturer = lesson.lecturer;
+            this.room = lesson.room;
+            this.clss = lesson.clss;
+            this.subject = lesson.subject;
+            this.topic = lesson.topic;
+            this.prac = lesson.prac;
+            return this;
+        }
+
         public Lesson build()
         {
             return new Lesson(this);

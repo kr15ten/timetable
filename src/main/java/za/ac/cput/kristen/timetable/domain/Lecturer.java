@@ -82,6 +82,16 @@ public class Lecturer implements Serializable
             return this;
         }
 
+        public Builder copy(Lecturer lect)
+        {
+            this.empNo = lect.empNo;
+            this.name = lect.name;
+            this.qualification = lect.qualification;
+            this.surname = lect.surname;
+            this.subjects = lect.subjects;
+            return this;
+        }
+
         public Lecturer build()
         {
             return new Lecturer(this);

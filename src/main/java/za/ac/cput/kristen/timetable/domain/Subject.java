@@ -61,6 +61,14 @@ public class Subject implements Serializable
             return this;
         }
 
+        public Builder copy(Subject sub)
+        {
+            this.code = sub.code;
+            this.name = sub.name;
+            this.credits = sub.credits;
+            return this;
+        }
+
         public Subject build()
         {
             return new Subject(this);

@@ -69,6 +69,14 @@ public class Class implements Serializable
             return this;
         }
 
+        public Builder copy(Class clss)
+        {
+            this.classCode = clss.classCode;
+            this.courseCode = clss. courseCode;
+            this.students = clss.students;
+            return this;
+        }
+
 
         public Class build()
         {

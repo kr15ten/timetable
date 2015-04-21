@@ -53,6 +53,14 @@ public class Examslot implements Serializable
             return this;
         }
 
+        public Builder copy(Examslot exmslot)
+        {
+            this.term = exmslot.term;
+            this.endDate = exmslot.endDate;
+            this.startDate = exmslot.startDate;
+            return this;
+        }
+
         public Examslot build()
         {
             return new Examslot(this);
