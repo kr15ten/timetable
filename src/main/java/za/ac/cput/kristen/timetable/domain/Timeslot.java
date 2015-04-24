@@ -1,5 +1,6 @@
 package za.ac.cput.kristen.timetable.domain;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import java.io.Serializable;
 import java.sql.Time;
@@ -7,11 +8,12 @@ import java.sql.Time;
 /**
  * Created by student on 2015/04/13.
  */
-@Entity
+@Embeddable
 public class Timeslot implements Serializable
 {
     private String day;
     private Time start, end;
+    private int rotationalWeek;
 
     private Timeslot(){}
 
@@ -20,6 +22,7 @@ public class Timeslot implements Serializable
         day = build.day;
         start = build.start;
         end = build.end;
+        rotationalWeek = build.rotationalWeek;
     }
 
     public String getDay()
@@ -35,17 +38,28 @@ public class Timeslot implements Serializable
         return end;
     }
 
+    public int getRotationalWeek()
+    {
+        return rotationalWeek;
+    }
 
     public static class Builder
     {
         private String day;
         private Time start, end;
+        private int rotationalWeek;
 
         public Builder(String day, Time start, Time end)
         {
             this.day = day;
             this.start = start;
             this.end = end;
+        }
+
+        public Builder rotationalWeek(int week)
+        {
+            rotationalWeek = week;
+            return this;
         }
 
         public Builder copy(Timeslot slot)

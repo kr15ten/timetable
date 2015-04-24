@@ -15,8 +15,8 @@ public class ClassTest
     @Before
     public void setUp() throws Exception
     {
-        stud1 = new Student.Builder("1234", "Tristan", "Bro").creditsEarned(70).build();
-        stud2 = new Student.Builder("5678", "Mandy", "Mo").courseYear(2).creditsEarned(20).build();
+        stud1 = new Student.Builder(1234, "Tristan", "Bro").creditsEarned(70).build();
+        stud2 = new Student.Builder(5678, "Mandy", "Mo").courseYear(2).creditsEarned(20).build();
         clss = new Class.Builder("A3", "ND: Information Technology").addStudent(stud1).addStudent(stud2).build();
     }
 

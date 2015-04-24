@@ -14,7 +14,7 @@ public class LecturerTest
     @Before
     public void setUp() throws Exception
     {
-        lecturer = new Lecturer.Builder("E123", "William", "Hide").qualifications("none").build();
+        lecturer = new Lecturer.Builder(123, "William", "Hide").qualifications("none").build();
     }
 
 

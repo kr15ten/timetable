@@ -1,6 +1,7 @@
 package za.ac.cput.kristen.timetable.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -9,6 +10,7 @@ import java.io.Serializable;
 @Entity
 public class Subject implements Serializable
 {
+    @Id
     private String code;
     private String name;
     private int credits;

@@ -1,13 +1,13 @@
 package za.ac.cput.kristen.timetable.domain;
 
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by student on 2015/04/13.
  */
-@Entity
+@Embeddable
 public class Examslot implements Serializable
 {
     private int term;

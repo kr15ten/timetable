@@ -1,6 +1,9 @@
 package za.ac.cput.kristen.timetable.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -10,10 +13,13 @@ import java.io.Serializable;
 @Entity
 public class Student implements Serializable
 {
-    private String studNo, name, surname, courseCode;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int studNo;
+    private String name, surname, courseCode;
     private int creditsEarned, courseYear;
 
-    public String getStudNo() {
+    public int getStudNo() {
         return studNo;
     }
 
@@ -53,10 +59,11 @@ public class Student implements Serializable
 
     public static class Builder
     {
-        private String studNo, name, surname, courseCode;
+        private int studNo;
+        private String name, surname, courseCode;
         private int creditsEarned, courseYear;
 
-        public Builder(String studNo, String name, String surname)
+        public Builder(int studNo, String name, String surname)
         {
             this.studNo = studNo;
             this.name = name;
@@ -98,22 +105,20 @@ public class Student implements Serializable
         }
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Student)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Student student = (Student) o;
 
-        if (studNo != null ? !studNo.equals(student.studNo) : student.studNo != null) return false;
+        return studNo == student.studNo;
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        return studNo != null ? studNo.hashCode() : 0;
+        return studNo;
     }
 
     @Override

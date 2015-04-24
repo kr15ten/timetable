@@ -1,6 +1,9 @@
 package za.ac.cput.kristen.timetable.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +14,12 @@ import java.util.List;
 @Entity
 public class Course implements Serializable
 {
-    private String courseCode, name, qualification;
+    @Id
+    private String courseCode;
+    private String name, qualification;
     private int years, credits;
+
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Subject> subjects;
 
     private Course()

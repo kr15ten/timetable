@@ -1,6 +1,6 @@
 package za.ac.cput.kristen.timetable.domain;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,7 +10,12 @@ import java.util.List;
 @Entity
 public class Lecturer implements Serializable
 {
-    private String empNo, name, surname, qualification;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int empNo;
+    private String name, surname, qualification;
+
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Subject> subjects;
 
 
@@ -27,7 +32,7 @@ public class Lecturer implements Serializable
         subjects = builder.subjects;
     }
 
-    public String getEmpNo() {
+    public int getEmpNo() {
         return empNo;
     }
 
@@ -54,10 +59,11 @@ public class Lecturer implements Serializable
 
     public static class Builder
     {
-        private String empNo, name, surname, qualification;
+        private int empNo;
+        private String name, surname, qualification;
         private List<Subject> subjects;
 
-        public Builder(String empNo, String name, String surname)
+        public Builder(int empNo, String name, String surname)
         {
             this.empNo = empNo;
             this.name = name;
@@ -101,18 +107,17 @@ public class Lecturer implements Serializable
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Lecturer)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Lecturer lecturer = (Lecturer) o;
 
-        if (empNo != null ? !empNo.equals(lecturer.empNo) : lecturer.empNo != null) return false;
+        return empNo == lecturer.empNo;
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        return empNo != null ? empNo.hashCode() : 0;
+        return empNo;
     }
 
     @Override
