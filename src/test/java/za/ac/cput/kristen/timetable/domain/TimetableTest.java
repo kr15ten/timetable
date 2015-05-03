@@ -45,9 +45,9 @@ public class TimetableTest
         tEnd = new Time(9, 55, 00);
 
         //Student setUp
-        stud1 = TimetableFactory.createStudent(1234, "Tristan", "Bro", "N2350", 40, 2);
-        stud2 = TimetableFactory.createStudent(5678, "Mandy", "Mo", "N2350", 20, 2);
-        stud3 = TimetableFactory.createStudent(1123, "Mark", "NewKid", "N2350", 45, 3);
+        stud1 = TimetableFactory.createStudent(Long.valueOf(1234), "Tristan", "Bro", "N2350", 40, 2);
+        stud2 = TimetableFactory.createStudent(Long.valueOf(5678), "Mandy", "Mo", "N2350", 20, 2);
+        stud3 = TimetableFactory.createStudent(Long.valueOf(1123), "Mark", "NewKid", "N2350", 45, 3);
         students = new ArrayList<Student>();
         students.add(stud1);
         students.add(stud2);
@@ -76,7 +76,7 @@ public class TimetableTest
 
 
         //Lecturer setUp
-        lecturer = TimetableFactory.createLecturer(123, "William", "Hide", "none", subjects);
+        lecturer = TimetableFactory.createLecturer(Long.valueOf(123), "William", "Hide", "none", subjects);
 
 
         //Room setUp

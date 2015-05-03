@@ -7,16 +7,15 @@ import java.io.Serializable;
  * Created by student on 2015/04/13.
  */
 @Embeddable
-public class Room implements Serializable
-{
+public class Room implements Serializable {
     private String roomNumber;
     private int size;
     private Boolean lab;
 
-    private Room(){}
+    private Room() {
+    }
 
-    public Room(Builder builder)
-    {
+    public Room(Builder builder) {
         roomNumber = builder.roomNumber;
         size = builder.size;
         lab = builder.lab;
@@ -34,39 +33,33 @@ public class Room implements Serializable
         return lab;
     }
 
-    public static class Builder
-    {
+    public static class Builder {
         private String roomNumber;
         private int size;
         private Boolean lab;
 
-        public Builder(String roomNumber)
-        {
+        public Builder(String roomNumber) {
             this.roomNumber = roomNumber;
         }
 
-        public Builder size(int size)
-        {
+        public Builder size(int size) {
             this.size = size;
             return this;
         }
 
-        public Builder lab(Boolean lab)
-        {
+        public Builder lab(Boolean lab) {
             this.lab = lab;
             return this;
         }
 
-        public Builder copy(Room room)
-        {
+        public Builder copy(Room room) {
             this.roomNumber = room.roomNumber;
             this.size = room.size;
             this.lab = room.lab;
             return this;
         }
 
-        public Room build()
-        {
+        public Room build() {
             return new Room(this);
         }
     }

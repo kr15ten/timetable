@@ -1,9 +1,6 @@
 package za.ac.cput.kristen.timetable.domain;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,19 +9,19 @@ import java.util.List;
  * Created by student on 2015/04/13.
  */
 @Entity
-public class Class implements Serializable
-{
+public class Class implements Serializable {
     @Id
     private String classCode;
     private String courseCode;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "class_code")
     private List<Student> students;
 
-    private Class(){}
+    private Class() {
+    }
 
-    public Class(Builder builder)
-    {
+    public Class(Builder builder) {
         classCode = builder.classCode;
         courseCode = builder.courseCode;
         students = builder.students;
@@ -38,8 +35,7 @@ public class Class implements Serializable
         return courseCode;
     }
 
-    public Student getStudent(int i)
-    {
+    public Student getStudent(int i) {
         return students.get(i);
     }
 
@@ -48,21 +44,17 @@ public class Class implements Serializable
     }
 
 
-    public static class Builder
-    {
+    public static class Builder {
         private String classCode, courseCode;
         private List<Student> students;
 
-        public Builder(String classCode, String courseCode)
-        {
+        public Builder(String classCode, String courseCode) {
             this.classCode = classCode;
             this.courseCode = courseCode;
         }
 
-        public Builder addStudent(Student stud)
-        {
-            if (students == null)
-            {
+        public Builder addStudent(Student stud) {
+            if (students == null) {
                 students = new ArrayList<Student>();
             }
 
@@ -70,23 +62,20 @@ public class Class implements Serializable
             return this;
         }
 
-        public Builder students(List<Student> students)
-        {
+        public Builder students(List<Student> students) {
             this.students = students;
             return this;
         }
 
-        public Builder copy(Class clss)
-        {
+        public Builder copy(Class clss) {
             this.classCode = clss.classCode;
-            this.courseCode = clss. courseCode;
+            this.courseCode = clss.courseCode;
             this.students = clss.students;
             return this;
         }
 
 
-        public Class build()
-        {
+        public Class build() {
             return new Class(this);
         }
     }

@@ -9,24 +9,22 @@ import java.sql.Time;
  * Created by student on 2015/04/13.
  */
 @Embeddable
-public class Timeslot implements Serializable
-{
+public class Timeslot implements Serializable {
     private String day;
     private Time start, end;
     private int rotationalWeek;
 
-    private Timeslot(){}
+    private Timeslot() {
+    }
 
-    private Timeslot(Builder build)
-    {
+    private Timeslot(Builder build) {
         day = build.day;
         start = build.start;
         end = build.end;
         rotationalWeek = build.rotationalWeek;
     }
 
-    public String getDay()
-    {
+    public String getDay() {
         return day;
     }
 
@@ -38,40 +36,34 @@ public class Timeslot implements Serializable
         return end;
     }
 
-    public int getRotationalWeek()
-    {
+    public int getRotationalWeek() {
         return rotationalWeek;
     }
 
-    public static class Builder
-    {
+    public static class Builder {
         private String day;
         private Time start, end;
         private int rotationalWeek;
 
-        public Builder(String day, Time start, Time end)
-        {
+        public Builder(String day, Time start, Time end) {
             this.day = day;
             this.start = start;
             this.end = end;
         }
 
-        public Builder rotationalWeek(int week)
-        {
+        public Builder rotationalWeek(int week) {
             rotationalWeek = week;
             return this;
         }
 
-        public Builder copy(Timeslot slot)
-        {
+        public Builder copy(Timeslot slot) {
             this.day = slot.day;
             this.start = slot.start;
             this.end = slot.end;
             return this;
         }
 
-        public Timeslot build()
-        {
+        public Timeslot build() {
             return new Timeslot(this);
         }
     }

@@ -25,7 +25,7 @@ public class LessonTest
         room = new Room.Builder("4.23").lab(true).build();
         subject = new Subject.Builder("TPG300S").credits(40).build();
         clss = new Class.Builder("A3", "ND:IT").build();
-        lecturer = new Lecturer.Builder(1234, "Paul", "Runner").build();
+        lecturer = new Lecturer.Builder(Long.valueOf(1234), "Paul", "Runner").build();
         start = new Time(8, 30, 00);
         end = new Time(9, 55, 00);
         timeslot = new Timeslot.Builder("Tuesday", end, start).build();

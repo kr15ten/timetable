@@ -7,8 +7,7 @@ import java.io.Serializable;
  * Created by student on 2015/04/13.
  */
 @Embeddable
-public class Lesson implements Serializable
-{
+public class Lesson implements Serializable {
     private Timeslot slot;
     private Lecturer lecturer;
     private Room room;
@@ -17,11 +16,10 @@ public class Lesson implements Serializable
     private String topic;
     private Boolean prac;
 
-    private Lesson()
-    {}
+    private Lesson() {
+    }
 
-    public Lesson(Builder builder)
-    {
+    public Lesson(Builder builder) {
         slot = builder.slot;
         lecturer = builder.lecturer;
         room = builder.room;
@@ -59,8 +57,7 @@ public class Lesson implements Serializable
         return prac;
     }
 
-    public static class Builder
-    {
+    public static class Builder {
         private Timeslot slot;
         private Lecturer lecturer;
         private Room room;
@@ -69,34 +66,29 @@ public class Lesson implements Serializable
         private String topic;
         private Boolean prac;
 
-        public Builder(Timeslot slot, Lecturer lecturer, Class clss, Subject subject)
-        {
+        public Builder(Timeslot slot, Lecturer lecturer, Class clss, Subject subject) {
             this.slot = slot;
             this.lecturer = lecturer;
             this.clss = clss;
             this.subject = subject;
         }
 
-        public Builder room(Room room)
-        {
+        public Builder room(Room room) {
             this.room = room;
             return this;
         }
 
-        public Builder topic(String topic)
-        {
+        public Builder topic(String topic) {
             this.topic = topic;
             return this;
         }
 
-        public Builder practical(Boolean prac)
-        {
+        public Builder practical(Boolean prac) {
             this.prac = prac;
             return this;
         }
 
-        public Builder copy(Lesson lesson)
-        {
+        public Builder copy(Lesson lesson) {
             this.slot = lesson.slot;
             this.lecturer = lesson.lecturer;
             this.room = lesson.room;
@@ -107,8 +99,7 @@ public class Lesson implements Serializable
             return this;
         }
 
-        public Lesson build()
-        {
+        public Lesson build() {
             return new Lesson(this);
         }
     }

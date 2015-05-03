@@ -1,7 +1,6 @@
 package za.ac.cput.kristen.timetable.domain;
 
 
-
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Date;
@@ -10,18 +9,17 @@ import java.util.Date;
  * Created by student on 2015/04/13.
  */
 @Embeddable
-public class Exam implements Serializable
-{
+public class Exam implements Serializable {
     private Date startTime;
     private double hours, subjectContribution;
     private String topic;
     private Subject subject;
     private Boolean prac;
 
-    private Exam(){}
+    private Exam() {
+    }
 
-    public Exam(Builder builder)
-    {
+    public Exam(Builder builder) {
         startTime = builder.startTime;
         hours = builder.hours;
         subjectContribution = builder.subjectContribution;
@@ -54,41 +52,35 @@ public class Exam implements Serializable
         return prac;
     }
 
-    public static class Builder
-    {
+    public static class Builder {
         private Date startTime;
         private double hours, subjectContribution;
         private String topic;
         private Subject subject;
         private Boolean prac;
 
-        public Builder(double subjectContribution, String topic, Subject subject)
-        {
+        public Builder(double subjectContribution, String topic, Subject subject) {
             this.subjectContribution = subjectContribution;
             this.topic = topic;
             this.subject = subject;
         }
 
-        public Builder startTime(Date startTime)
-        {
+        public Builder startTime(Date startTime) {
             this.startTime = startTime;
             return this;
         }
 
-        public Builder hours(double hours)
-        {
+        public Builder hours(double hours) {
             this.hours = hours;
             return this;
         }
 
-        public Builder practical(Boolean prac)
-        {
+        public Builder practical(Boolean prac) {
             this.prac = prac;
             return this;
         }
 
-        public Builder copy(Exam exam)
-        {
+        public Builder copy(Exam exam) {
             this.startTime = exam.startTime;
             this.hours = exam.hours;
             this.subjectContribution = exam.subjectContribution;
@@ -98,8 +90,7 @@ public class Exam implements Serializable
             return this;
         }
 
-        public Exam build()
-        {
+        public Exam build() {
             return new Exam(this);
         }
     }

@@ -14,7 +14,7 @@ public class StudentTest
     @Before
     public void setUp() throws Exception
     {
-        stud = new Student.Builder(123, "Richard", "Worster").build();
+        stud = new Student.Builder(Long.valueOf(123), "Richard", "Worster").build();
     }
 
 

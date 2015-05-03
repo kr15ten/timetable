@@ -1,6 +1,5 @@
 package za.ac.cput.kristen.timetable.service;
 
-import za.ac.cput.kristen.timetable.domain.*;
 import za.ac.cput.kristen.timetable.domain.Class;
 
 import java.util.List;

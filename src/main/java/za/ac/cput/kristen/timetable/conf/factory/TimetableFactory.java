@@ -61,7 +61,7 @@ public class TimetableFactory
         return examslot;
     }
 
-    public static Lecturer createLecturer(int empNo, String name,
+    public static Lecturer createLecturer(Long empNo, String name,
                                           String surname, String qualification,
                                           List<Subject> subjects)
     {
@@ -96,7 +96,7 @@ public class TimetableFactory
         return room;
     }
 
-    public static Student createStudent(int studNo, String name, String surname,
+    public static Student createStudent(Long studNo, String name, String surname,
                                         String courseCode, int creditsEarned,
                                         int courseYear)
     {

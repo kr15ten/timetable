@@ -7,18 +7,15 @@ import java.util.Date;
  * Created by student on 2015/04/13.
  */
 @Embeddable
-public class Termslot
-{
+public class Termslot {
     private int term;
     private Date startDate, endDate;
 
 
-    private Termslot()
-    {
+    private Termslot() {
     }
 
-    public Termslot(Builder builder)
-    {
+    public Termslot(Builder builder) {
         term = builder.term;
         startDate = builder.startDate;
         endDate = builder.endDate;
@@ -36,33 +33,28 @@ public class Termslot
         return endDate;
     }
 
-    public static class Builder
-    {
+    public static class Builder {
         private int term;
         private Date startDate, endDate;
 
-        public Builder(Date startDate, Date endDate)
-        {
+        public Builder(Date startDate, Date endDate) {
             this.startDate = startDate;
             this.endDate = endDate;
         }
 
-        public Builder term(int term)
-        {
+        public Builder term(int term) {
             this.term = term;
             return this;
         }
 
-        public Builder copy(Termslot tmslot)
-        {
+        public Builder copy(Termslot tmslot) {
             this.term = tmslot.term;
             this.startDate = tmslot.startDate;
             this.endDate = tmslot.endDate;
             return this;
         }
 
-        public Termslot build()
-        {
+        public Termslot build() {
             return new Termslot(this);
         }
     }

@@ -8,17 +8,14 @@ import java.util.Date;
  * Created by student on 2015/04/13.
  */
 @Embeddable
-public class Examslot implements Serializable
-{
+public class Examslot implements Serializable {
     private int term;
     private Date startDate, endDate;
 
-    private Examslot()
-    {
+    private Examslot() {
     }
 
-    public Examslot(Builder builder)
-    {
+    public Examslot(Builder builder) {
         term = builder.term;
         startDate = builder.startDate;
         endDate = builder.endDate;
@@ -36,33 +33,28 @@ public class Examslot implements Serializable
         return endDate;
     }
 
-    public static class Builder
-    {
+    public static class Builder {
         private int term;
         private Date startDate, endDate;
 
-        public Builder(Date startDate, Date endDate)
-        {
+        public Builder(Date startDate, Date endDate) {
             this.startDate = startDate;
             this.endDate = endDate;
         }
 
-        public Builder term(int term)
-        {
+        public Builder term(int term) {
             this.term = term;
             return this;
         }
 
-        public Builder copy(Examslot exmslot)
-        {
+        public Builder copy(Examslot exmslot) {
             this.term = exmslot.term;
             this.endDate = exmslot.endDate;
             this.startDate = exmslot.startDate;
             return this;
         }
 
-        public Examslot build()
-        {
+        public Examslot build() {
             return new Examslot(this);
         }
     }

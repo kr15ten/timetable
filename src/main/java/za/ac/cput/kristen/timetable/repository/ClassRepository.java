@@ -1,11 +1,15 @@
 package za.ac.cput.kristen.timetable.repository;
 
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+import za.ac.cput.kristen.timetable.domain.Class;
 
 /**
  * Created by kris on 4/16/15.
  */
-public interface ClassRepository extends CrudRepository<Class, Long>
+@Repository
+public interface ClassRepository extends CrudRepository<Class, String>
 {
     public Class findByCode(String code);
 }

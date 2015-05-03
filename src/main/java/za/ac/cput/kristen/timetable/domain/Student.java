@@ -11,15 +11,14 @@ import java.io.Serializable;
  */
 
 @Entity
-public class Student implements Serializable
-{
+public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int studNo;
+    private Long studNo;
     private String name, surname, courseCode;
     private int creditsEarned, courseYear;
 
-    public int getStudNo() {
+    public Long getStudNo() {
         return studNo;
     }
 
@@ -43,12 +42,10 @@ public class Student implements Serializable
         return courseYear;
     }
 
-    private Student()
-    {
+    private Student() {
     }
 
-    public Student(Builder builder)
-    {
+    public Student(Builder builder) {
         this.studNo = builder.studNo;
         this.name = builder.name;
         this.surname = builder.surname;
@@ -57,39 +54,33 @@ public class Student implements Serializable
         this.courseYear = builder.courseYear;
     }
 
-    public static class Builder
-    {
-        private int studNo;
+    public static class Builder {
+        private Long studNo;
         private String name, surname, courseCode;
         private int creditsEarned, courseYear;
 
-        public Builder(int studNo, String name, String surname)
-        {
+        public Builder(Long studNo, String name, String surname) {
             this.studNo = studNo;
             this.name = name;
             this.surname = surname;
         }
 
-        public Builder courseCode(String courseCode)
-        {
+        public Builder courseCode(String courseCode) {
             this.courseCode = courseCode;
             return this;
         }
 
-        public Builder creditsEarned(int creditsEarned)
-        {
+        public Builder creditsEarned(int creditsEarned) {
             this.creditsEarned = creditsEarned;
             return this;
         }
 
-        public Builder courseYear(int courseYear)
-        {
+        public Builder courseYear(int courseYear) {
             this.courseYear = courseYear;
             return this;
         }
 
-        public Builder copy(Student stud)
-        {
+        public Builder copy(Student stud) {
             this.studNo = stud.studNo;
             this.name = stud.name;
             this.surname = stud.surname;
@@ -99,8 +90,7 @@ public class Student implements Serializable
             return this;
         }
 
-        public Student build()
-        {
+        public Student build() {
             return new Student(this);
         }
     }
@@ -118,7 +108,7 @@ public class Student implements Serializable
 
     @Override
     public int hashCode() {
-        return studNo;
+        return studNo != null ? studNo.hashCode() : 0;
     }
 
     @Override

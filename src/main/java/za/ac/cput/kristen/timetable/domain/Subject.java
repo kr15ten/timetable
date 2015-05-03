@@ -8,20 +8,17 @@ import java.io.Serializable;
  * Created by student on 2015/04/13.
  */
 @Entity
-public class Subject implements Serializable
-{
+public class Subject implements Serializable {
     @Id
     private String code;
     private String name;
     private int credits;
 
 
-    private Subject()
-    {
+    private Subject() {
     }
 
-    public Subject(Builder builder)
-    {
+    public Subject(Builder builder) {
         this.code = builder.code;
         this.name = builder.name;
         this.credits = builder.credits;
@@ -40,39 +37,33 @@ public class Subject implements Serializable
     }
 
 
-    public static class Builder
-    {
+    public static class Builder {
         private String code;
         private String name;
         private int credits;
 
-        public Builder(String code)
-        {
+        public Builder(String code) {
             this.code = code;
         }
 
-        public Builder name(String name)
-        {
+        public Builder name(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder credits(int credits)
-        {
+        public Builder credits(int credits) {
             this.credits = credits;
             return this;
         }
 
-        public Builder copy(Subject sub)
-        {
+        public Builder copy(Subject sub) {
             this.code = sub.code;
             this.name = sub.name;
             this.credits = sub.credits;
             return this;
         }
 
-        public Subject build()
-        {
+        public Subject build() {
             return new Subject(this);
         }
     }

@@ -8,23 +8,21 @@ import java.util.List;
  * Created by student on 2015/04/13.
  */
 @Entity
-public class Lecturer implements Serializable
-{
+public class Lecturer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int empNo;
+    private Long empNo;
     private String name, surname, qualification;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "lect_emp_no")
     private List<Subject> subjects;
 
 
-    private Lecturer()
-    {
+    private Lecturer() {
     }
 
-    public Lecturer(Builder builder)
-    {
+    public Lecturer(Builder builder) {
         empNo = builder.empNo;
         name = builder.name;
         surname = builder.surname;
@@ -32,7 +30,7 @@ public class Lecturer implements Serializable
         subjects = builder.subjects;
     }
 
-    public int getEmpNo() {
+    public Long getEmpNo() {
         return empNo;
     }
 
@@ -48,8 +46,7 @@ public class Lecturer implements Serializable
         return qualification;
     }
 
-    public Subject getSubject(int i)
-    {
+    public Subject getSubject(int i) {
         return subjects.get(i);
     }
 
@@ -57,39 +54,33 @@ public class Lecturer implements Serializable
         return subjects;
     }
 
-    public static class Builder
-    {
-        private int empNo;
+    public static class Builder {
+        private Long empNo;
         private String name, surname, qualification;
         private List<Subject> subjects;
 
-        public Builder(int empNo, String name, String surname)
-        {
+        public Builder(Long empNo, String name, String surname) {
             this.empNo = empNo;
             this.name = name;
             this.surname = surname;
         }
 
-        public Builder qualifications(String qualification)
-        {
+        public Builder qualifications(String qualification) {
             this.qualification = qualification;
             return this;
         }
 
-        public Builder addSubject(Subject subject)
-        {
+        public Builder addSubject(Subject subject) {
             this.subjects.add(subject);
             return this;
         }
 
-        public Builder subject(List<Subject> subjects)
-        {
+        public Builder subject(List<Subject> subjects) {
             this.subjects = subjects;
             return this;
         }
 
-        public Builder copy(Lecturer lect)
-        {
+        public Builder copy(Lecturer lect) {
             this.empNo = lect.empNo;
             this.name = lect.name;
             this.qualification = lect.qualification;
@@ -98,8 +89,7 @@ public class Lecturer implements Serializable
             return this;
         }
 
-        public Lecturer build()
-        {
+        public Lecturer build() {
             return new Lecturer(this);
         }
     }
@@ -117,7 +107,7 @@ public class Lecturer implements Serializable
 
     @Override
     public int hashCode() {
-        return empNo;
+        return empNo != null ? empNo.hashCode() : 0;
     }
 
     @Override
