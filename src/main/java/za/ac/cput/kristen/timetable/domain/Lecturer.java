@@ -23,7 +23,6 @@ public class Lecturer implements Serializable {
     }
 
     public Lecturer(Builder builder) {
-        empNo = builder.empNo;
         name = builder.name;
         surname = builder.surname;
         qualification = builder.qualification;
@@ -55,12 +54,10 @@ public class Lecturer implements Serializable {
     }
 
     public static class Builder {
-        private Long empNo;
         private String name, surname, qualification;
         private List<Subject> subjects;
 
-        public Builder(Long empNo, String name, String surname) {
-            this.empNo = empNo;
+        public Builder(String name, String surname) {
             this.name = name;
             this.surname = surname;
         }
@@ -81,7 +78,6 @@ public class Lecturer implements Serializable {
         }
 
         public Builder copy(Lecturer lect) {
-            this.empNo = lect.empNo;
             this.name = lect.name;
             this.qualification = lect.qualification;
             this.surname = lect.surname;

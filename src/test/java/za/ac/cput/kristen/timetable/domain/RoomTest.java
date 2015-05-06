@@ -3,6 +3,7 @@ package za.ac.cput.kristen.timetable.domain;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import za.ac.cput.kristen.timetable.conf.factory.RoomFactory;
 
 /**
  * Created by kris on 4/15/15.
@@ -14,13 +15,24 @@ public class RoomTest
     @Before
     public void setUp() throws Exception
     {
-        room = new Room.Builder("4.12").lab(true).size(23).build();
+        room = RoomFactory.createRoom("1.12", 38, true);
     }
 
 
     @Test
-    public void testRoom() throws Exception
+    public void testCreateRoom() throws Exception
     {
         Assert.assertEquals(true, room.getLab());
+    }
+
+    @Test
+    public void testUpdateRoom() throws Exception
+    {
+        Room newRoom = new Room
+                .Builder(room.getRoomNumber())
+                .copy(room)
+                .lab(false)
+                .build();
+        Assert.assertEquals(false, newRoom.getLab());
     }
 }

@@ -1,11 +1,10 @@
 package za.ac.cput.kristen.timetable.repository;
 
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import za.ac.cput.kristen.timetable.App;
 import za.ac.cput.kristen.timetable.domain.Course;
@@ -14,16 +13,15 @@ import za.ac.cput.kristen.timetable.domain.Course;
 /**
  * Created by kris on 5/3/15.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
-public class TestCrudCourse
+public class TestCrudCourse extends AbstractTestNGSpringContextTests
 {
+
     private String code;
 
     @Autowired
     private CourseRepository repository;
-
 
     @Test
     public void create() throws Exception
@@ -50,15 +48,17 @@ public class TestCrudCourse
     @Test(dependsOnMethods = "read")
     public void update() throws Exception
     {
-        Course course = repository.findOne(code);
         Course newCourse = new Course.Builder("BTech: IT")
                 .credits(450)
                 .name("BTech: Information Technology")
                 .qualification("Bachelor of Technology")
                 .build();
-        repository.save(newCourse);
 
-        Assert.assertEquals("BTech: IT", course.getCourseCode());
+        repository.save(newCourse);
+        code = newCourse.getCourseCode();
+        Course updatedCourse = repository.findOne(code);
+
+        Assert.assertEquals("BTech: IT", updatedCourse.getCourseCode());
     }
 
     @Test(dependsOnMethods = "update")

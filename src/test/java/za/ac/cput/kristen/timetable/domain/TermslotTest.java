@@ -3,6 +3,7 @@ package za.ac.cput.kristen.timetable.domain;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import za.ac.cput.kristen.timetable.conf.factory.TermslotFactory;
 
 import java.util.Date;
 
@@ -17,15 +18,25 @@ public class TermslotTest
     @Before
     public void setUp() throws Exception
     {
-        start = new Date(2014, 04, 02);
-        end = new Date(2014, 06, 15);
-        termslot = new Termslot.Builder(start, end).term(2).build();
+        start = new Date(2015, 05, 25);
+        end = new Date(2015, 06, 12);
+        termslot = TermslotFactory.createTermslot(2, start, end);
     }
 
 
     @Test
-    public void test() throws Exception
+    public void testCreateTermslot() throws Exception
     {
         Assert.assertEquals(2, termslot.getTerm());
+    }
+
+    @Test
+    public void testUpdateTermslot() throws Exception
+    {
+        Termslot newTermslot = new Termslot
+                .Builder(termslot.getStartDate(), termslot.getEndDate())
+                .term(4)
+                .build();
+        Assert.assertEquals(4, newTermslot.getTerm());
     }
 }

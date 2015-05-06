@@ -10,5 +10,4 @@ import za.ac.cput.kristen.timetable.domain.Course;
 @Repository
 public interface CourseRepository extends CrudRepository<Course, String>
 {
-    public Course findByCode(String code);
 }

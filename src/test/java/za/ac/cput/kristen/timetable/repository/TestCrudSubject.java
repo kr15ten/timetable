@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -14,10 +15,10 @@ import za.ac.cput.kristen.timetable.domain.Subject;
  * Created by kris on 5/3/15.
  */
 
-@RunWith(SpringJUnit4ClassRunner.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
-public class TestCrudSubject
+public class TestCrudSubject extends AbstractTestNGSpringContextTests
 {
     private String code;
 
@@ -50,12 +51,14 @@ public class TestCrudSubject
     @Test(dependsOnMethods = "read")
     public void update() throws Exception
     {
-        Subject subject = repository.findOne(code);
         Subject newSubject = new Subject.Builder("OLE200S")
                 .build();
         repository.save(newSubject);
 
-        Assert.assertEquals("OLE200S", subject.getCode());
+        code = newSubject.getCode();
+        Subject updatedSubject = repository.findOne(code);
+
+        Assert.assertEquals("OLE200S", updatedSubject.getCode());
     }
 
 

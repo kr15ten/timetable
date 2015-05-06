@@ -10,5 +10,4 @@ import za.ac.cput.kristen.timetable.domain.Subject;
 @Repository
 public interface SubjectRepository extends CrudRepository<Subject, String>
 {
-    public Subject findByCode(String code);
 }

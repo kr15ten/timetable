@@ -46,7 +46,6 @@ public class Student implements Serializable {
     }
 
     public Student(Builder builder) {
-        this.studNo = builder.studNo;
         this.name = builder.name;
         this.surname = builder.surname;
         this.courseCode = builder.courseCode;
@@ -55,12 +54,10 @@ public class Student implements Serializable {
     }
 
     public static class Builder {
-        private Long studNo;
         private String name, surname, courseCode;
         private int creditsEarned, courseYear;
 
-        public Builder(Long studNo, String name, String surname) {
-            this.studNo = studNo;
+        public Builder(String name, String surname) {
             this.name = name;
             this.surname = surname;
         }
@@ -81,7 +78,6 @@ public class Student implements Serializable {
         }
 
         public Builder copy(Student stud) {
-            this.studNo = stud.studNo;
             this.name = stud.name;
             this.surname = stud.surname;
             this.courseCode = stud.courseCode;

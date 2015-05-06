@@ -10,5 +10,4 @@ import za.ac.cput.kristen.timetable.domain.Lecturer;
 @Repository
 public interface LecturerRepository extends CrudRepository<Lecturer, Long>
 {
-    public Lecturer findByCode(String code);
 }
