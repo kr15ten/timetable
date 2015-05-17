@@ -3,6 +3,8 @@ package za.ac.cput.kristen.timetable.service.Impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.kristen.timetable.domain.Lecturer;
+import za.ac.cput.kristen.timetable.domain.Lesson;
+import za.ac.cput.kristen.timetable.domain.Subject;
 import za.ac.cput.kristen.timetable.repository.LecturerRepository;
 import za.ac.cput.kristen.timetable.service.LecturerService;
 
@@ -29,5 +31,15 @@ public class LecturerServiceImpl implements LecturerService
         }
 
         return allLecturers;
+    }
+
+    @Override
+    public List<Subject> getSubjects(Long empNo) {
+        return repository.findOne(empNo).getSubjects();
+    }
+
+    @Override
+    public List<Lesson> getLessons(Long empNo) {
+        return repository.findOne(empNo).getLessons();
     }
 }

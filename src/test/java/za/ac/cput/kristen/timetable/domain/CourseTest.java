@@ -21,11 +21,12 @@ public class CourseTest
     @Before
     public void setUp() throws Exception
     {
-        sub1 = SubjectFactory.createSubject("TP200S", "Technical Programming", 40);
+        sub1 = SubjectFactory.createSubject("TP200S", "Technical Programming", 40, null);
         subjects = new ArrayList<Subject>();
         subjects.add(sub1);
         course = CourseFactory.createCourse("ND:IT", "ND: Information Technology", "National Diploma", 3, 400, subjects);
     }
+
 
     @Test
     public void testCreateCourse() throws Exception

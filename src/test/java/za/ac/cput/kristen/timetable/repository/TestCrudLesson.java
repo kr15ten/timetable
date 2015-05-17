@@ -8,67 +8,64 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import za.ac.cput.kristen.timetable.App;
-import za.ac.cput.kristen.timetable.domain.Lecturer;
+import za.ac.cput.kristen.timetable.domain.Lesson;
 
 /**
- * Created by kris on 5/3/15.
+ * Created by kris on 5/12/15.
  */
 
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
-public class TestCrudLecturer extends AbstractTestNGSpringContextTests
+public class TestCrudLesson extends AbstractTestNGSpringContextTests
 {
-    private Long empNo;
+    private Long id;
 
     @Autowired
-    private LecturerRepository repository;
+    private LessonRepository repository;
 
 
     @Test
     public void create() throws Exception
     {
-        Lecturer lecturer = new Lecturer.Builder("Jacqui", "Jacobs")
-                .qualifications("National Diploma: Information Technology")
+        Lesson lesson = new Lesson.Builder()
+                .topic("Making pies")
                 .build();
-        repository.save(lecturer);
-        empNo = lecturer.getEmpNo();
+        repository.save(lesson);
+        id = lesson.getId();
 
-        Assert.assertNotNull(lecturer.getEmpNo());
+        Assert.assertNotNull(lesson.getId());
     }
-
 
     @Test(dependsOnMethods = "create")
     public void read() throws Exception
     {
-        Lecturer lecturer = repository.findOne(empNo);
+        Lesson lesson = repository.findOne(id);
 
-        Assert.assertEquals("Jacqui", lecturer.getName());
+        Assert.assertEquals("Making pies", lesson.getTopic());
     }
-
 
     @Test(dependsOnMethods = "read")
     public void update() throws Exception
     {
-        Lecturer newLecturer = new Lecturer.Builder("Sam", "Sue")
+        Lesson newLesson = new Lesson.Builder()
+                .topic("none")
                 .build();
-        repository.save(newLecturer);
-        empNo = newLecturer.getEmpNo();
-        Lecturer updatedLecturer = repository.findOne(empNo);
 
-        Assert.assertEquals("Sam", updatedLecturer.getName());
+        repository.save(newLesson);
+        id = newLesson.getId();
+        Lesson updatedLesson = repository.findOne(id);
+
+        Assert.assertEquals("none", updatedLesson.getTopic());
     }
-
 
     @Test(dependsOnMethods = "update")
     public void delete() throws Exception
     {
-        Lecturer lecturer = repository.findOne(empNo);
-        repository.delete(lecturer);
-        Lecturer newLecturer = repository.findOne(empNo);
-
-        Assert.assertNull(newLecturer);
+        Lesson lesson = repository.findOne(id);
+        repository.delete(lesson);
+        Lesson newLesson = repository.findOne(id);
+        Assert.assertNull(newLesson);
     }
-
 
     @AfterClass
     public void cleanUp() throws Exception

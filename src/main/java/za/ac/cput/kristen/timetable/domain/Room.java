@@ -1,16 +1,23 @@
 package za.ac.cput.kristen.timetable.domain;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by student on 2015/04/13.
  */
-@Embeddable
+@Entity
 public class Room implements Serializable {
+    @Id
     private String roomNumber;
     private int size;
     private Boolean lab;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "room")
+    private List<Lesson> lessons;
 
     private Room() {
     }
@@ -19,6 +26,7 @@ public class Room implements Serializable {
         roomNumber = builder.roomNumber;
         size = builder.size;
         lab = builder.lab;
+        lessons = builder.lessons;
     }
 
     public String getRoomNumber() {
@@ -33,10 +41,21 @@ public class Room implements Serializable {
         return lab;
     }
 
+    public List<Lesson> getLessons()
+    {
+        return lessons;
+    }
+
+    public Lesson getLesson(int i)
+    {
+        return lessons.get(i);
+    }
+
     public static class Builder {
         private String roomNumber;
         private int size;
         private Boolean lab;
+        private List<Lesson> lessons;
 
         public Builder(String roomNumber) {
             this.roomNumber = roomNumber;
@@ -52,10 +71,26 @@ public class Room implements Serializable {
             return this;
         }
 
+        public Builder addLesson(Lesson lesson)
+        {
+            if (lessons.isEmpty())
+                lessons = new ArrayList<Lesson>();
+
+            lessons.add(lesson);
+            return this;
+        }
+
+        public Builder lessons(List<Lesson> lessons)
+        {
+            this.lessons = lessons;
+            return this;
+        }
+
         public Builder copy(Room room) {
             this.roomNumber = room.roomNumber;
             this.size = room.size;
             this.lab = room.lab;
+            this.lessons = room.lessons;
             return this;
         }
 

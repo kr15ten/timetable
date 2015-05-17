@@ -8,66 +8,64 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import za.ac.cput.kristen.timetable.App;
-import za.ac.cput.kristen.timetable.domain.Subject;
+import za.ac.cput.kristen.timetable.domain.Room;
 
 /**
- * Created by kris on 5/3/15.
+ * Created by kris on 5/7/15.
  */
 
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
-public class TestCrudSubject extends AbstractTestNGSpringContextTests
+public class TestCrudRoom extends AbstractTestNGSpringContextTests
 {
-    private String code;
+    private String roomNo;
 
     @Autowired
-    private SubjectRepository repository;
+    private RoomRepository repository;
 
 
     @Test
     public void create() throws Exception
     {
-        Subject subject = new Subject.Builder("TPG300S", "Technical Programming 3")
-                .credits(800)
+        Room room = new Room.Builder("3.15")
+                .lab(true)
                 .build();
-        repository.save(subject);
-        code = subject.getCode();
+        repository.save(room);
+        roomNo = room.getRoomNumber();
 
-        Assert.assertNotNull(subject.getCode());
+
+        Assert.assertNotNull(room.getRoomNumber());
     }
-
 
     @Test(dependsOnMethods = "create")
     public void read() throws Exception
     {
-        Subject subject = repository.findOne(code);
+        Room room = repository.findOne(roomNo);
 
-        Assert.assertEquals("TPG300S", subject.getCode());
+        Assert.assertEquals("3.15", room.getRoomNumber());
     }
-
 
     @Test(dependsOnMethods = "read")
     public void update() throws Exception
     {
-        Subject newSubject = new Subject.Builder("OLE200S", "Oley")
+        Room newRoom = new Room.Builder("4A")
                 .build();
-        repository.save(newSubject);
 
-        code = newSubject.getCode();
-        Subject updatedSubject = repository.findOne(code);
+        repository.save(newRoom);
+        roomNo = newRoom.getRoomNumber();
+        Room updatedRoom = repository.findOne(roomNo);
 
-        Assert.assertEquals("OLE200S", updatedSubject.getCode());
+        Assert.assertEquals("4A", updatedRoom.getRoomNumber());
     }
-
 
     @Test(dependsOnMethods = "update")
     public void delete() throws Exception
     {
-        Subject subject = repository.findOne(code);
-        repository.delete(subject);
-        Subject newSubject = repository.findOne(code);
+        Room room = repository.findOne(roomNo);
+        repository.delete(room);
+        Room newRoom = repository.findOne(roomNo);
 
-        Assert.assertNull(newSubject);
+        Assert.assertNull(newRoom);
     }
 
 

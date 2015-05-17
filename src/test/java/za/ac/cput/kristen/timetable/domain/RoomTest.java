@@ -15,7 +15,7 @@ public class RoomTest
     @Before
     public void setUp() throws Exception
     {
-        room = RoomFactory.createRoom("1.12", 38, true);
+        room = RoomFactory.createRoom("1.12", 38, true, null);
     }
 
 

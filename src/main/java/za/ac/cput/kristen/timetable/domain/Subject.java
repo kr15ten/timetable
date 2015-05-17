@@ -1,8 +1,9 @@
 package za.ac.cput.kristen.timetable.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by student on 2015/04/13.
@@ -14,6 +15,10 @@ public class Subject implements Serializable {
     private String name;
     private int credits;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "subject")
+    private List<Lesson> lessons;
+
 
     private Subject() {
     }
@@ -22,6 +27,7 @@ public class Subject implements Serializable {
         this.code = builder.code;
         this.name = builder.name;
         this.credits = builder.credits;
+        this.lessons = builder.lessons;
     }
 
     public String getCode() {
@@ -36,14 +42,27 @@ public class Subject implements Serializable {
         return credits;
     }
 
+    public Lesson getLesson(int i)
+    {
+        return lessons.get(i);
+    }
+
+    public List<Lesson> getLessons()
+    {
+        return lessons;
+    }
+
 
     public static class Builder {
         private String code;
         private String name;
         private int credits;
+        private List<Lesson> lessons;
 
-        public Builder(String code) {
+        public Builder(String code, String name)
+        {
             this.code = code;
+            this.name = name;
         }
 
         public Builder name(String name) {
@@ -56,10 +75,26 @@ public class Subject implements Serializable {
             return this;
         }
 
+        public Builder addLesson(Lesson lesson)
+        {
+            if (lessons.isEmpty())
+                lessons = new ArrayList<Lesson>();
+
+            lessons.add(lesson);
+            return this;
+        }
+
+        public Builder lessons(List<Lesson> lessons)
+        {
+            this.lessons = lessons;
+            return this;
+        }
+
         public Builder copy(Subject sub) {
             this.code = sub.code;
             this.name = sub.name;
             this.credits = sub.credits;
+            this.lessons = sub.lessons;
             return this;
         }
 

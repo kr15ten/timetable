@@ -12,6 +12,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import za.ac.cput.kristen.timetable.App;
 import za.ac.cput.kristen.timetable.domain.Class;
@@ -31,7 +32,6 @@ public class TestCrudClass extends AbstractTestNGSpringContextTests
     {
         Class clss = new Class.Builder("3A", "ND:IT")
                 .build();
-        System.out.println(repository.toString());
         repository.save(clss);
         code = clss.getClassCode();
 
@@ -67,5 +67,11 @@ public class TestCrudClass extends AbstractTestNGSpringContextTests
         repository.delete(clss);
         Class newClass = repository.findOne(code);
         Assert.assertNull(newClass);
+    }
+
+    @AfterClass
+    public void cleanUp() throws Exception
+    {
+        repository.deleteAll();
     }
 }

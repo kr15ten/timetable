@@ -2,6 +2,7 @@ package za.ac.cput.kristen.timetable.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,9 +15,13 @@ public class Lecturer implements Serializable {
     private Long empNo;
     private String name, surname, qualification;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "lect_emp_no")
     private List<Subject> subjects;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "lecturer")
+    private List<Lesson> lessons;
 
 
     private Lecturer() {
@@ -27,6 +32,7 @@ public class Lecturer implements Serializable {
         surname = builder.surname;
         qualification = builder.qualification;
         subjects = builder.subjects;
+        lessons = builder.lessons;
     }
 
     public Long getEmpNo() {
@@ -53,9 +59,12 @@ public class Lecturer implements Serializable {
         return subjects;
     }
 
+    public List<Lesson> getLessons() {return lessons;}
+
     public static class Builder {
         private String name, surname, qualification;
         private List<Subject> subjects;
+        private List<Lesson> lessons;
 
         public Builder(String name, String surname) {
             this.name = name;
@@ -68,6 +77,9 @@ public class Lecturer implements Serializable {
         }
 
         public Builder addSubject(Subject subject) {
+            if (subjects.isEmpty())
+                subjects = new ArrayList<Subject>();
+
             this.subjects.add(subject);
             return this;
         }
@@ -77,11 +89,27 @@ public class Lecturer implements Serializable {
             return this;
         }
 
+        public Builder addLesson(Lesson lesson)
+        {
+            if (lessons.isEmpty())
+                lessons = new ArrayList<Lesson>();
+
+            this.lessons.add(lesson);
+            return this;
+        }
+
+        public Builder lessons(List<Lesson> lessons)
+        {
+            this.lessons = lessons;
+            return this;
+        }
+
         public Builder copy(Lecturer lect) {
             this.name = lect.name;
             this.qualification = lect.qualification;
             this.surname = lect.surname;
             this.subjects = lect.subjects;
+            this.lessons = lect.lessons;
             return this;
         }
 

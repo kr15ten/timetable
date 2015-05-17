@@ -23,7 +23,6 @@ public class TermslotTest
         termslot = TermslotFactory.createTermslot(2, start, end);
     }
 
-
     @Test
     public void testCreateTermslot() throws Exception
     {

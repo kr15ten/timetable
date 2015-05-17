@@ -3,6 +3,7 @@ package za.ac.cput.kristen.timetable.service.Impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.kristen.timetable.domain.Course;
+import za.ac.cput.kristen.timetable.domain.Subject;
 import za.ac.cput.kristen.timetable.repository.CourseRepository;
 import za.ac.cput.kristen.timetable.service.CourseService;
 
@@ -29,5 +30,10 @@ public class CourseServiceImpl implements CourseService
         }
 
         return allCourses;
+    }
+
+    @Override
+    public List<Subject> getSubjects(String courseCode) {
+        return repository.findOne(courseCode).getSubjects();
     }
 }

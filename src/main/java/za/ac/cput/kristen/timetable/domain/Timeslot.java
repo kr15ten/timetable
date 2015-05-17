@@ -1,27 +1,45 @@
 package za.ac.cput.kristen.timetable.domain;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by student on 2015/04/13.
  */
-@Embeddable
-public class Timeslot implements Serializable {
+@Entity
+public class Timeslot implements Serializable
+{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String day;
     private Time start, end;
-    private int rotationalWeek;
+
+    @Column(name="rotational_week")
+    private int rotationalWeek = 0;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "timeslot")
+    private List<Lesson> lessons;
 
     private Timeslot() {
     }
 
-    private Timeslot(Builder build) {
+    public Timeslot(Builder build) {
         day = build.day;
         start = build.start;
         end = build.end;
         rotationalWeek = build.rotationalWeek;
+        lessons = build.lessons;
+    }
+
+    public Long getId()
+    {
+        return id;
     }
 
     public String getDay() {
@@ -40,10 +58,16 @@ public class Timeslot implements Serializable {
         return rotationalWeek;
     }
 
+    public List<Lesson> getLessons()
+    {
+        return lessons;
+    }
+
     public static class Builder {
         private String day;
         private Time start, end;
         private int rotationalWeek;
+        private List<Lesson> lessons;
 
         public Builder(String day, Time start, Time end) {
             this.day = day;
@@ -56,10 +80,26 @@ public class Timeslot implements Serializable {
             return this;
         }
 
+        public Builder addLesson(Lesson lesson)
+        {
+            if (lessons.isEmpty())
+                lessons = new ArrayList<Lesson>();
+
+            lessons.add(lesson);
+            return this;
+        }
+
+        public Builder lessons(List<Lesson> lessons)
+        {
+            this.lessons = lessons;
+            return this;
+        }
+
         public Builder copy(Timeslot slot) {
             this.day = slot.day;
             this.start = slot.start;
             this.end = slot.end;
+            this.lessons = slot.lessons;
             return this;
         }
 

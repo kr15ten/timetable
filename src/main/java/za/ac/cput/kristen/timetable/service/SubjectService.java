@@ -1,5 +1,6 @@
 package za.ac.cput.kristen.timetable.service;
 
+import za.ac.cput.kristen.timetable.domain.Lesson;
 import za.ac.cput.kristen.timetable.domain.Subject;
 
 import java.util.List;
@@ -10,4 +11,6 @@ import java.util.List;
 public interface SubjectService
 {
     List<Subject> getSubjects();
+
+    List<Lesson> getLessons(String code);
 }

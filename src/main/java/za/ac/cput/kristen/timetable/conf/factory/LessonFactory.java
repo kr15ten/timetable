@@ -7,13 +7,10 @@ import za.ac.cput.kristen.timetable.domain.*;
  */
 public class LessonFactory
 {
-    public static Lesson createLesson(Timeslot slot, Lecturer lecturer,
-                                      Room room, za.ac.cput.kristen.timetable.domain.Class clss, Subject subject,
-                                      String topic, Boolean prac)
+    public static Lesson createLesson(String topic, Boolean prac)
     {
         Lesson lesson = new Lesson
-                .Builder(slot, lecturer, clss, subject)
-                .room(room)
+                .Builder()
                 .topic(topic)
                 .practical(prac)
                 .build();

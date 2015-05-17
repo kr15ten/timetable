@@ -1,18 +1,20 @@
 package za.ac.cput.kristen.timetable.domain;
 
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
  * Created by student on 2015/04/13.
  */
-@Embeddable
+@Entity
 public class Lesson implements Serializable {
-    private Timeslot slot;
-    private Lecturer lecturer;
-    private Room room;
-    private Class clss;
-    private Subject subject;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String topic;
     private Boolean prac;
 
@@ -20,33 +22,13 @@ public class Lesson implements Serializable {
     }
 
     public Lesson(Builder builder) {
-        slot = builder.slot;
-        lecturer = builder.lecturer;
-        room = builder.room;
-        clss = builder.clss;
-        subject = builder.subject;
         topic = builder.topic;
         prac = builder.prac;
     }
 
-    public Timeslot getSlot() {
-        return slot;
-    }
-
-    public Lecturer getLecturer() {
-        return lecturer;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public Class getClss() {
-        return clss;
-    }
-
-    public Subject getSubject() {
-        return subject;
+    public Long getId()
+    {
+        return id;
     }
 
     public String getTopic() {
@@ -58,25 +40,13 @@ public class Lesson implements Serializable {
     }
 
     public static class Builder {
-        private Timeslot slot;
-        private Lecturer lecturer;
-        private Room room;
-        private Class clss;
-        private Subject subject;
         private String topic;
         private Boolean prac;
 
-        public Builder(Timeslot slot, Lecturer lecturer, Class clss, Subject subject) {
-            this.slot = slot;
-            this.lecturer = lecturer;
-            this.clss = clss;
-            this.subject = subject;
+        public Builder() {
+
         }
 
-        public Builder room(Room room) {
-            this.room = room;
-            return this;
-        }
 
         public Builder topic(String topic) {
             this.topic = topic;
@@ -89,11 +59,6 @@ public class Lesson implements Serializable {
         }
 
         public Builder copy(Lesson lesson) {
-            this.slot = lesson.slot;
-            this.lecturer = lesson.lecturer;
-            this.room = lesson.room;
-            this.clss = lesson.clss;
-            this.subject = lesson.subject;
             this.topic = lesson.topic;
             this.prac = lesson.prac;
             return this;
@@ -104,42 +69,28 @@ public class Lesson implements Serializable {
         }
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Lesson)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Lesson lesson = (Lesson) o;
 
-        if (clss != null ? !clss.equals(lesson.clss) : lesson.clss != null) return false;
-        if (lecturer != null ? !lecturer.equals(lesson.lecturer) : lesson.lecturer != null) return false;
-        if (slot != null ? !slot.equals(lesson.slot) : lesson.slot != null) return false;
-        if (subject != null ? !subject.equals(lesson.subject) : lesson.subject != null) return false;
+        return !(id != null ? !id.equals(lesson.id) : lesson.id != null);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = slot != null ? slot.hashCode() : 0;
-        result = 31 * result + (lecturer != null ? lecturer.hashCode() : 0);
-        result = 31 * result + (clss != null ? clss.hashCode() : 0);
-        result = 31 * result + (subject != null ? subject.hashCode() : 0);
-        return result;
+        return id != null ? id.hashCode() : 0;
     }
 
 
     @Override
     public String toString() {
         return "Lesson{" +
-                "slot=" + slot +
-                ", lecturer=" + lecturer +
-                ", clss=" + clss +
-                ", room=" + room +
-                ", subject=" + subject +
+                "id=" + id +
                 ", topic='" + topic + '\'' +
-                ", prac=" + prac +
                 '}';
     }
 }

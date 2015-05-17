@@ -15,7 +15,8 @@ public class SubjectTest
     @Before
     public void setUp() throws Exception
     {
-        sub1 = SubjectFactory.createSubject("TP200S", "Technical Programming", 40);    }
+        sub1 = SubjectFactory.createSubject("TP200S", "Technical Programming", 40, null);
+    }
 
 
     @Test
@@ -28,7 +29,7 @@ public class SubjectTest
     public void testUpdateSubject() throws Exception
     {
         Subject newSub = new Subject
-                .Builder(sub1.getCode())
+                .Builder(sub1.getCode(), sub1.getName())
                 .copy(sub1)
                 .credits(20)
                 .build();

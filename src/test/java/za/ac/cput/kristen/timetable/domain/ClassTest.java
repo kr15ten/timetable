@@ -1,10 +1,8 @@
 package za.ac.cput.kristen.timetable.domain;
 
-import junit.framework.TestSuite;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import za.ac.cput.kristen.timetable.AppTest;
 import za.ac.cput.kristen.timetable.conf.factory.ClassFactory;
 import za.ac.cput.kristen.timetable.conf.factory.StudentFactory;
 
@@ -15,6 +13,7 @@ import java.util.List;
 /**
  * Created by student on 2015/04/15.
  */
+
 public class ClassTest
 {
     private Student stud1, stud2, stud3;
@@ -30,12 +29,7 @@ public class ClassTest
         students = new ArrayList<Student>();
         students.add(stud1);
         students.add(stud2);
-        clss = ClassFactory.createClass("A3", "ND: Information Technology", students);
-    }
-
-    public static junit.framework.Test suite()
-    {
-        return new TestSuite( AppTest.class );
+        clss = ClassFactory.createClass("A3", "ND: Information Technology", students, null);
     }
 
     @Test

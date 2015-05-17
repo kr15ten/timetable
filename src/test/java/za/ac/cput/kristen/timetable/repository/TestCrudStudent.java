@@ -5,6 +5,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import za.ac.cput.kristen.timetable.App;
 import za.ac.cput.kristen.timetable.domain.Student;
@@ -68,5 +69,12 @@ public class TestCrudStudent extends AbstractTestNGSpringContextTests
         Student newStudent = repository.findOne(studNo);
 
         Assert.assertNull(newStudent);
+    }
+
+
+    @AfterClass
+    public void cleanUp() throws Exception
+    {
+        repository.deleteAll();
     }
 }

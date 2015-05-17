@@ -2,6 +2,7 @@ package za.ac.cput.kristen.timetable.repository;
 
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -22,6 +23,7 @@ public class TestCrudCourse extends AbstractTestNGSpringContextTests
 
     @Autowired
     private CourseRepository repository;
+
 
     @Test
     public void create() throws Exception
@@ -68,5 +70,12 @@ public class TestCrudCourse extends AbstractTestNGSpringContextTests
         repository.delete(course);
         Course newCourse = repository.findOne(code);
         Assert.assertNull(newCourse);
+    }
+
+
+    @AfterClass
+    public void cleanUp() throws Exception
+    {
+        repository.deleteAll();
     }
 }

@@ -11,11 +11,12 @@ import java.util.List;
 public class ClassFactory
 {
     public static za.ac.cput.kristen.timetable.domain.Class createClass(String classCode, String courseCode,
-                                                                        List<Student> students)
+                                                                        List<Student> students, List<Lesson> lessons)
     {
         Class clss = new Class
                 .Builder(classCode, courseCode)
                 .students(students)
+                .lessons(lessons)
                 .build();
         return clss;
     }

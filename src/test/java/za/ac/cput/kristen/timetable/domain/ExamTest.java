@@ -21,7 +21,7 @@ public class ExamTest
     public void setUp() throws Exception
     {
         date = new Date(2015, 05, 04);
-        sub1 = SubjectFactory.createSubject("TP200S", "Technical Programming", 40);
+        sub1 = SubjectFactory.createSubject("TP200S", "Technical Programming", 40, null);
         exam = ExamFactory.createExam(date, 2.5, 0.20, "functions", sub1, true);
     }
 

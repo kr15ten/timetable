@@ -14,9 +14,14 @@ public class Class implements Serializable {
     private String classCode;
     private String courseCode;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "class_code")
     private List<Student> students;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "class")
+    private List<Lesson> lessons;
+
 
     private Class() {
     }
@@ -25,6 +30,7 @@ public class Class implements Serializable {
         classCode = builder.classCode;
         courseCode = builder.courseCode;
         students = builder.students;
+        lessons = builder.lessons;
     }
 
     public String getClassCode() {
@@ -43,10 +49,20 @@ public class Class implements Serializable {
         return students;
     }
 
+    public Lesson getLesson(int i)
+    {
+        return lessons.get(i);
+    }
+
+    public List<Lesson> getLessons()
+    {
+        return lessons;
+    }
 
     public static class Builder {
         private String classCode, courseCode;
         private List<Student> students;
+        private List<Lesson> lessons;
 
         public Builder(String classCode, String courseCode) {
             this.classCode = classCode;
@@ -54,9 +70,8 @@ public class Class implements Serializable {
         }
 
         public Builder addStudent(Student stud) {
-            if (students == null) {
+            if (students.isEmpty())
                 students = new ArrayList<Student>();
-            }
 
             students.add(stud);
             return this;
@@ -67,10 +82,26 @@ public class Class implements Serializable {
             return this;
         }
 
+        public Builder addLesson(Lesson lesson)
+        {
+            if (lessons.isEmpty())
+                lessons = new ArrayList<Lesson>();
+
+            lessons.add(lesson);
+            return this;
+        }
+
+        public Builder lessons(List<Lesson> lessons)
+        {
+            this.lessons = lessons;
+            return this;
+        }
+
         public Builder copy(Class clss) {
             this.classCode = clss.classCode;
             this.courseCode = clss.courseCode;
             this.students = clss.students;
+            this.lessons = clss.lessons;
             return this;
         }
 

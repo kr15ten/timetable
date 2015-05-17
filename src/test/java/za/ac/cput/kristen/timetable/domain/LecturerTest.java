@@ -3,8 +3,7 @@ package za.ac.cput.kristen.timetable.domain;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import za.ac.cput.kristen.timetable.conf.factory.LecturerFactory;
-import za.ac.cput.kristen.timetable.conf.factory.SubjectFactory;
+import za.ac.cput.kristen.timetable.conf.factory.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +20,10 @@ public class LecturerTest
     @Before
     public void setUp() throws Exception
     {
-        sub1 = SubjectFactory.createSubject("TP200S", "Technical Programming", 40);
+        sub1 = SubjectFactory.createSubject("TP200S", "Technical Programming", 40, null);
         subjects = new ArrayList<Subject>();
         subjects.add(sub1);
-        lecturer = LecturerFactory.createLecturer("William", "Hide", "none", subjects);
+        lecturer = LecturerFactory.createLecturer("William", "Hide", "none", subjects, null);
     }
 
 

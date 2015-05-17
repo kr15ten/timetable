@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
 import za.ac.cput.kristen.timetable.domain.Class;
+import za.ac.cput.kristen.timetable.domain.Lesson;
+import za.ac.cput.kristen.timetable.domain.Student;
 import za.ac.cput.kristen.timetable.repository.ClassRepository;
 import za.ac.cput.kristen.timetable.service.ClassService;
 
@@ -30,5 +32,15 @@ public class ClassServiceImpl implements ClassService
         }
 
         return allClasses;
+    }
+
+    public List<Student> getStudents(String classCode)
+    {
+           return repository.findOne(classCode).getStudents();
+    }
+
+    @Override
+    public List<Lesson> getLessons(String classCode) {
+        return repository.findOne(classCode).getLessons();
     }
 }

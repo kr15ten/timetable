@@ -8,68 +8,61 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import za.ac.cput.kristen.timetable.App;
-import za.ac.cput.kristen.timetable.domain.Subject;
+import za.ac.cput.kristen.timetable.domain.Timeslot;
 
 /**
- * Created by kris on 5/3/15.
+ * Created by kris on 5/12/15.
  */
-
 @SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
-public class TestCrudSubject extends AbstractTestNGSpringContextTests
+public class TestCrudTimeslot extends AbstractTestNGSpringContextTests
 {
-    private String code;
+    private Long id;
 
     @Autowired
-    private SubjectRepository repository;
+    private TimeslotRepository repository;
 
 
     @Test
     public void create() throws Exception
     {
-        Subject subject = new Subject.Builder("TPG300S", "Technical Programming 3")
-                .credits(800)
+        Timeslot timeslot = new Timeslot.Builder("Wednesday", null, null)
                 .build();
-        repository.save(subject);
-        code = subject.getCode();
+        repository.save(timeslot);
+        id = timeslot.getId();
 
-        Assert.assertNotNull(subject.getCode());
+        Assert.assertNotNull(timeslot.getId());
     }
-
 
     @Test(dependsOnMethods = "create")
     public void read() throws Exception
     {
-        Subject subject = repository.findOne(code);
+        Timeslot timeslot = repository.findOne(id);
 
-        Assert.assertEquals("TPG300S", subject.getCode());
+        Assert.assertEquals("Wednesday", timeslot.getDay());
     }
-
 
     @Test(dependsOnMethods = "read")
     public void update() throws Exception
     {
-        Subject newSubject = new Subject.Builder("OLE200S", "Oley")
+        Timeslot newTimeslot = new Timeslot.Builder("Thursday", null, null)
                 .build();
-        repository.save(newSubject);
 
-        code = newSubject.getCode();
-        Subject updatedSubject = repository.findOne(code);
+        repository.save(newTimeslot);
+        id = newTimeslot.getId();
+        Timeslot updatedTimeslot = repository.findOne(id);
 
-        Assert.assertEquals("OLE200S", updatedSubject.getCode());
+        Assert.assertEquals("Thursday", updatedTimeslot.getDay());
     }
-
 
     @Test(dependsOnMethods = "update")
     public void delete() throws Exception
     {
-        Subject subject = repository.findOne(code);
-        repository.delete(subject);
-        Subject newSubject = repository.findOne(code);
-
-        Assert.assertNull(newSubject);
+        Timeslot timeslot = repository.findOne(id);
+        repository.delete(timeslot);
+        Timeslot newTimeslot = repository.findOne(id);
+        Assert.assertNull(newTimeslot);
     }
-
 
     @AfterClass
     public void cleanUp() throws Exception

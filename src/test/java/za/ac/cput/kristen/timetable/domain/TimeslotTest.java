@@ -18,11 +18,10 @@ public class TimeslotTest
     @Before
     public void setUp() throws Exception
     {
-        timeslot = TimeslotFactory.createTimeslot("Wednesday", tStart, tEnd, 0);
+        timeslot = TimeslotFactory.createTimeslot("Wednesday", tStart, tEnd, 0, null);
         tStart = new Time(8, 30, 00);
         tEnd = new Time(9, 55, 00);
     }
-
 
     @Test
     public void testCreateTimeslot() throws Exception
