@@ -36,4 +36,9 @@ public class CourseServiceImpl implements CourseService
     public List<Subject> getSubjects(String courseCode) {
         return repository.findOne(courseCode).getSubjects();
     }
+
+    @Override
+    public Course getCourse(String coursecode) {
+        return repository.findOne(coursecode);
+    }
 }

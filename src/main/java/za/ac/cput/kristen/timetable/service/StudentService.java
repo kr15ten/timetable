@@ -1,5 +1,6 @@
 package za.ac.cput.kristen.timetable.service;
 
+import za.ac.cput.kristen.timetable.domain.Course;
 import za.ac.cput.kristen.timetable.domain.Student;
 
 import java.util.List;
@@ -10,4 +11,8 @@ import java.util.List;
 public interface StudentService
 {
     List<Student> getStudents();
+
+    Student getStudent(Long id);
+
+    String getCoursecode(Long id);
 }

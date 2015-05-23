@@ -13,4 +13,6 @@ public interface CourseService
     List<Course> getCourses();
 
     List<Subject> getSubjects(String courseCode);
+
+    Course getCourse(String coursecode);
 }

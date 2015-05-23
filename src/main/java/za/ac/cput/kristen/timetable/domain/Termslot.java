@@ -21,6 +21,11 @@ public class Termslot {
         endDate = builder.endDate;
     }
 
+    public int getYear()
+    {
+        return startDate.getYear();
+    }
+
     public int getTerm() {
         return term;
     }

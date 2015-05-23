@@ -16,4 +16,6 @@ public interface ClassService
     List<Student> getStudents(String classCode);
 
     List<Lesson> getLessons(String classCode);
+
+    String getClassCode(Long id);
 }
