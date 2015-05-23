@@ -7,6 +7,7 @@ import za.ac.cput.kristen.timetable.domain.Class;
 import za.ac.cput.kristen.timetable.domain.Lesson;
 import za.ac.cput.kristen.timetable.domain.Student;
 import za.ac.cput.kristen.timetable.repository.ClassRepository;
+import za.ac.cput.kristen.timetable.repository.StudentRepository;
 import za.ac.cput.kristen.timetable.service.ClassService;
 
 import java.util.ArrayList;
@@ -20,6 +21,9 @@ public class ClassServiceImpl implements ClassService
 {
     @Autowired
     private ClassRepository repository;
+
+    @Autowired
+    private StudentRepository studentRepository;
 
     public List<Class> getClasses()
     {
@@ -42,5 +46,21 @@ public class ClassServiceImpl implements ClassService
     @Override
     public List<Lesson> getLessons(String classCode) {
         return repository.findOne(classCode).getLessons();
+    }
+
+    @Override
+    public String getClassCode(Long id)
+    {
+        Iterable<Class> classes = repository.findAll();
+        for(Class clss: classes)
+        {
+            for(Student student: clss.getStudents())
+            {
+                if (student.getStudNo() == id)
+                    return clss.getClassCode();
+            }
+        }
+
+        return null;
     }
 }

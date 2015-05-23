@@ -2,6 +2,7 @@ package za.ac.cput.kristen.timetable.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import za.ac.cput.kristen.timetable.domain.Course;
 import za.ac.cput.kristen.timetable.domain.Student;
 import za.ac.cput.kristen.timetable.repository.StudentRepository;
 import za.ac.cput.kristen.timetable.service.StudentService;
@@ -29,5 +30,16 @@ public class StudentServiceImpl implements StudentService
         }
 
         return allStudents;
+    }
+
+    @Override
+    public Student getStudent(Long id)
+    {
+        return repository.findOne(id);
+    }
+
+    @Override
+    public String getCoursecode(Long id) {
+        return repository.findOne(id).getCourseCode();
     }
 }

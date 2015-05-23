@@ -1,0 +1,116 @@
+package za.ac.cput.kristen.timetable.api;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import za.ac.cput.kristen.timetable.domain.Course;
+import za.ac.cput.kristen.timetable.domain.Student;
+import za.ac.cput.kristen.timetable.domain.Subject;
+import za.ac.cput.kristen.timetable.model.CourseResource;
+import za.ac.cput.kristen.timetable.model.StudentResource;
+import za.ac.cput.kristen.timetable.model.SubjectResource;
+import za.ac.cput.kristen.timetable.service.CourseService;
+import za.ac.cput.kristen.timetable.service.StudentService;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by kris on 5/23/15.
+ */
+
+@RestController
+@RequestMapping("api/student/**")
+public class StudentPage
+{
+    @Autowired
+    private StudentService service;
+    @Autowired
+    private CourseService courseService;
+
+
+    @RequestMapping(value = "", method = RequestMethod.GET)
+    public String Index()
+    {
+        return "Visit student details";
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public StudentResource getStudent(@PathVariable Long id)
+    {
+        StudentResource hateoas;
+        Student student = service.getStudent(id);
+
+        StudentResource res = new StudentResource
+                .Builder(student.getName(), student.getSurname())
+                .courseCode(student.getCourseCode())
+                .creditsEarned(student.getCreditsEarned())
+                .courseYear(student.getCourseYear())
+                .build();
+
+        Link studentDetails = new
+                Link("http://localhost:8080/api/student/" + res.getStudNo().toString())
+                .withRel("students");
+
+        res.add(studentDetails);
+        hateoas = res;
+
+        //return service.getStudent(id);
+        return hateoas;
+    }
+
+    @RequestMapping(value = "/course/{id}", method = RequestMethod.GET)
+    public CourseResource getCourse(@PathVariable Long id)
+    {
+        CourseResource hateoas;
+        Course course = courseService.getCourse(service.getCoursecode(id));
+
+        CourseResource res = new CourseResource
+                .Builder(course.getCourseCode())
+                .name(course.getName())
+                .qualification(course.getQualification())
+                .years(course.getYears())
+                .subjects(course.getSubjects())
+                .credits(course.getCredits())
+                .build();
+
+        Link studentsCourse = new
+                Link("http://localhost:8080/api/student/course/" + res.getCourseCode().toString())
+                .withRel("courses");
+
+        res.add(studentsCourse);
+        hateoas = res;
+
+        //return courseService.getCourse(service.getCoursecode(id));
+        return hateoas;
+    }
+
+    @RequestMapping(value = "/subjects/{id}", method = RequestMethod.GET)
+    public List<SubjectResource> getSubjects(@PathVariable Long id)
+    {
+        List<SubjectResource> hateoas = new ArrayList<>();
+        List<Subject> subjects = courseService.getSubjects(service.getCoursecode(id));
+
+        for(Subject subject: subjects)
+        {
+            SubjectResource res = new SubjectResource
+                    .Builder(subject.getCode(), subject.getName())
+                    .credits(subject.getCredits())
+                    .lessons(subject.getLessons())
+                    .build();
+
+            Link studentSubjects = new
+                    Link("http://localhost:8080/api/student/subjects/" + res.getCode().toString())
+                    .withRel("subjects");
+
+            res.add(studentSubjects);
+            hateoas.add(res);
+        }
+        //return courseService.getSubjects(service.getCoursecode(id));
+
+        return hateoas;
+    }
+}

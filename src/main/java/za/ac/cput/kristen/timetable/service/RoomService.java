@@ -13,4 +13,6 @@ public interface RoomService
     List<Room> getRooms();
 
     List<Lesson> getLessons(String id);
+
+    List<Room> getLaboratoryRooms();
 }

@@ -36,4 +36,19 @@ public class RoomServiceImpl implements RoomService
     public List<Lesson> getLessons(String id) {
         return repository.findOne(id).getLessons();
     }
+
+    @Override
+    public List<Room> getLaboratoryRooms()
+    {
+        List<Room> allRooms = new ArrayList<Room>();
+
+        Iterable<Room> rooms = repository.findAll();
+        for(Room room: rooms)
+        {
+            if(room.getLab())
+                allRooms.add(room);
+        }
+
+        return allRooms;
+    }
 }

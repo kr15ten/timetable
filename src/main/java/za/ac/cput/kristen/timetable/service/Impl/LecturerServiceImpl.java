@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import za.ac.cput.kristen.timetable.domain.Lecturer;
 import za.ac.cput.kristen.timetable.domain.Lesson;
 import za.ac.cput.kristen.timetable.domain.Subject;
+import za.ac.cput.kristen.timetable.domain.Termslot;
 import za.ac.cput.kristen.timetable.repository.LecturerRepository;
 import za.ac.cput.kristen.timetable.service.LecturerService;
 
@@ -41,5 +42,10 @@ public class LecturerServiceImpl implements LecturerService
     @Override
     public List<Lesson> getLessons(Long empNo) {
         return repository.findOne(empNo).getLessons();
+    }
+
+    @Override
+    public Lecturer getLecturer(Long id) {
+        return repository.findOne(id);
     }
 }
