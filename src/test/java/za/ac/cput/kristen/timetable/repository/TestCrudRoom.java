@@ -24,7 +24,7 @@ public class TestCrudRoom extends AbstractTestNGSpringContextTests
     private RoomRepository repository;
 
 
-    /*@Test
+    @Test
     public void create() throws Exception
     {
         Room room = new Room.Builder("3.15")
@@ -73,5 +73,5 @@ public class TestCrudRoom extends AbstractTestNGSpringContextTests
     public void cleanUp() throws Exception
     {
         repository.deleteAll();
-    }*/
+    }
 }

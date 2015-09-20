@@ -24,7 +24,7 @@ public class TestCrudStudent extends AbstractTestNGSpringContextTests
     private StudentRepository repository;
 
 
-    /*@Test
+    @Test
     public void create() throws Exception
     {
         Student student = new Student.Builder("Paul", "Patter")
@@ -76,5 +76,5 @@ public class TestCrudStudent extends AbstractTestNGSpringContextTests
     public void cleanUp() throws Exception
     {
         repository.deleteAll();
-    }*/
+    }
 }
