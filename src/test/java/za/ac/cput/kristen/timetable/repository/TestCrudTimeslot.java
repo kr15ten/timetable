@@ -34,7 +34,7 @@ public class TestCrudTimeslot extends AbstractTestNGSpringContextTests
         Assert.assertNotNull(timeslot.getId());
     }
 
-    @Test(dependsOnMethods = "create")
+    /*@Test(dependsOnMethods = "create")
     public void read() throws Exception
     {
         Timeslot timeslot = repository.findOne(id);
@@ -62,7 +62,7 @@ public class TestCrudTimeslot extends AbstractTestNGSpringContextTests
         repository.delete(timeslot);
         Timeslot newTimeslot = repository.findOne(id);
         Assert.assertNull(newTimeslot);
-    }
+    }*/
 
     @AfterClass
     public void cleanUp() throws Exception
