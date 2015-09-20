@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - timetable@localhost [2]" uuid="aef18a95-32fb-4e1b-808a-94f1b4bf6a5e">
+      <secret-storage>memory</secret-storage>
+    </data-source>
+  </component>
+</project>
