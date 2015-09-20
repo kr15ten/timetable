@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import za.ac.cput.kristen.timetable.domain.Lesson;
+import za.ac.cput.kristen.timetable.domain.Student;
 import za.ac.cput.kristen.timetable.model.LessonResource;
 import za.ac.cput.kristen.timetable.service.ClassService;
 import za.ac.cput.kristen.timetable.service.LecturerService;
@@ -27,6 +28,13 @@ public class HomePage
     @Autowired
     private LecturerService lecturerService;
 
+    @RequestMapping(method = RequestMethod.GET)
+    public Student getStudent(){
+        Student stud = new Student.Builder("Kristen", "Hide")
+                .creditsEarned(40)
+                .build();
+        return stud;
+    }
 
     @RequestMapping(value = "home", method = RequestMethod.GET)
     public String Index()
