@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08d5d499-0e43-4e83-be54-a1525fbc0c40" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/za/ac/cput/kristen/timetable/api/HomePage.java" afterPath="$PROJECT_DIR$/src/main/java/za/ac/cput/kristen/timetable/api/HomePage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudRoom.java" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudRoom.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudStudent.java" afterPath="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudStudent.java" />
     </list>
     <ignored path="timetable.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +26,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HomePage.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HomePage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/za/ac/cput/kristen/timetable/api/HomePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.57700205">
-              <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="47" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestCrudRoom.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudRoom.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="75" column="7" selection-start-line="75" selection-start-column="7" selection-end-line="75" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TestCrudStudent.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudStudent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.26694044">
+              <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -49,8 +70,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudSubject.java" />
-        <option value="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudStudent.java" />
-        <option value="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudRoom.java" />
         <option value="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudLesson.java" />
         <option value="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudLecturer.java" />
         <option value="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudCourse.java" />
@@ -58,6 +77,8 @@
         <option value="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/service/SubjectServiceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudTimeslot.java" />
         <option value="$PROJECT_DIR$/src/main/java/za/ac/cput/kristen/timetable/api/HomePage.java" />
+        <option value="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudRoom.java" />
+        <option value="$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudStudent.java" />
       </list>
     </option>
   </component>
@@ -536,12 +557,12 @@
       <option name="number" value="Default" />
       <updated>1442752909454</updated>
       <workItem from="1442752908586" duration="1445000" />
-      <workItem from="1442754634649" duration="2924000" />
+      <workItem from="1442754634649" duration="3292000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4369000" />
+    <option name="totallyTimeSpent" value="4737000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1456" height="876" extended-state="6" />
@@ -651,22 +672,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudStudent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6283367">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6283367">
-          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudLecturer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -725,8 +730,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/za/ac/cput/kristen/timetable/api/HomePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.57700205">
-          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="47" selection-start-line="32" selection-start-column="47" selection-end-line="32" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudRoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="75" column="7" selection-start-line="75" selection-start-column="7" selection-end-line="75" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/za/ac/cput/kristen/timetable/repository/TestCrudStudent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26694044">
+          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
           <folding />
         </state>
       </provider>
