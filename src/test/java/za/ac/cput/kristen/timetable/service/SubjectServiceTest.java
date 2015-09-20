@@ -47,7 +47,7 @@ public class SubjectServiceTest extends AbstractTestNGSpringContextTests
         Lesson less1 = LessonFactory.createLesson("Topic", false);
         lessons.add(less1);
 
-        Subject subject = SubjectFactory.createSubject("TP", null, 13, lessons);
+        Subject subject = SubjectFactory.createSubject("TP", "Technical Programming", 13, lessons);
 
         repository.save(subject);
         code = subject.getCode();
