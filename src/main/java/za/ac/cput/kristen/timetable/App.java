@@ -17,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableAutoConfiguration
 public class App 
 {
+    //git
     public static void main( String[] args )
     {
         System.out.println( "Hello World!\nThis is your timetable!" );
