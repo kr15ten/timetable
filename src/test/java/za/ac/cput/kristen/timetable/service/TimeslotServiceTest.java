@@ -29,7 +29,7 @@ public class TimeslotServiceTest extends AbstractTestNGSpringContextTests
     @Autowired
     private TimeslotService service;
 
-    private Long id;
+    private Long id = Long.valueOf(0);
 
     @Autowired
     private TimeslotRepository repository;
