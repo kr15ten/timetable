@@ -65,7 +65,7 @@ public class LecturerServiceTest extends AbstractTestNGSpringContextTests
     }
 
 
-    @Test(dependsOnMethods = "create")
+    /*@Test(dependsOnMethods = "create")
     public void testGetLecturerSubjects() throws Exception
     {
         subjects = service.getSubjects(empNo);
@@ -77,7 +77,7 @@ public class LecturerServiceTest extends AbstractTestNGSpringContextTests
     {
         lessons = service.getLessons(empNo);
         Assert.assertEquals(2, lessons.size());
-    }
+    }*/
 
 
     @AfterClass
