@@ -72,7 +72,7 @@ public class LecturerServiceTest extends AbstractTestNGSpringContextTests
         Assert.assertEquals(2, subjects.size());
     }
 
-    @Test
+    @Test(dependsOnMethods = "create")
     public void testGetLecturerLessons() throws Exception
     {
         lessons = service.getLessons(empNo);
