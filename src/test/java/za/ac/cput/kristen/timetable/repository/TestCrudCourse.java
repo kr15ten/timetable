@@ -39,7 +39,7 @@ public class TestCrudCourse extends AbstractTestNGSpringContextTests
         Assert.assertNotNull(course.getCourseCode());
     }
 
-    @Test(dependsOnMethods = "create")
+    /*@Test(dependsOnMethods = "create")
     public void read() throws Exception
     {
         Course course = repository.findOne(code);
@@ -70,7 +70,7 @@ public class TestCrudCourse extends AbstractTestNGSpringContextTests
         repository.delete(course);
         Course newCourse = repository.findOne(code);
         Assert.assertNull(newCourse);
-    }
+    }*/
 
 
     @AfterClass

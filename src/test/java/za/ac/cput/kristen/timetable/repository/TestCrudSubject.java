@@ -37,7 +37,7 @@ public class TestCrudSubject extends AbstractTestNGSpringContextTests
     }
 
 
-    @Test(dependsOnMethods = "create")
+    /*@Test(dependsOnMethods = "create")
     public void read() throws Exception
     {
         Subject subject = repository.findOne(code);
@@ -68,7 +68,7 @@ public class TestCrudSubject extends AbstractTestNGSpringContextTests
         Subject newSubject = repository.findOne(code);
 
         Assert.assertNull(newSubject);
-    }
+    }*/
 
 
     @AfterClass
