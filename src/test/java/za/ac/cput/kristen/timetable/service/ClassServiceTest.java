@@ -45,7 +45,7 @@ public class ClassServiceTest extends AbstractTestNGSpringContextTests
     }
 
 
-    /*@Test
+    @Test
     public void create() throws Exception
     {
         Student stud1 = StudentFactory.createStudent("Paul", "Rudd", null, 0, 0);
@@ -63,7 +63,7 @@ public class ClassServiceTest extends AbstractTestNGSpringContextTests
     }
 
 
-    @Test
+    @Test(dependsOnMethods = "create")
     public void testGetClassStudents() throws Exception
     {
         students = service.getStudents(classCode);
@@ -81,5 +81,5 @@ public class ClassServiceTest extends AbstractTestNGSpringContextTests
     public void cleanUp() throws Exception
     {
         repository.deleteAll();
-    }*/
+    }
 }

@@ -59,7 +59,7 @@ public class CourseServiceTest extends AbstractTestNGSpringContextTests
     }
 
 
-    @Test
+    @Test(dependsOnMethods = "create")
     public void testGetCourseSubjects() throws Exception
     {
         subjects = service.getSubjects(courseCode);

@@ -60,7 +60,7 @@ public class RoomServiceTest extends AbstractTestNGSpringContextTests
     }
 
 
-    @Test
+    @Test(dependsOnMethods = "create")
     public void testGetRoomLessons() throws Exception
     {
         List<Lesson> lessons = service.getLessons(id);
