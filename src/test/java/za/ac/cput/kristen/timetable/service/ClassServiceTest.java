@@ -45,16 +45,16 @@ public class ClassServiceTest extends AbstractTestNGSpringContextTests
     }
 
 
-    @Test
+    /*@Test
     public void create() throws Exception
     {
-        Student stud1 = StudentFactory.createStudent("Paul", "Rudd", "45", 0, 0);
+        Student stud1 = StudentFactory.createStudent("Paul", "Rudd", null, 0, 0);
         students.add(stud1);
 
         Lesson less1 = LessonFactory.createLesson("Topic", false);
         lessons.add(less1);
 
-        Class clss = ClassFactory.createClass("A3", "12", students, lessons);
+        Class clss = ClassFactory.createClass("A3", null, students, lessons);
 
         repository.save(clss);
         classCode = clss.getClassCode();
@@ -81,5 +81,5 @@ public class ClassServiceTest extends AbstractTestNGSpringContextTests
     public void cleanUp() throws Exception
     {
         repository.deleteAll();
-    }
+    }*/
 }

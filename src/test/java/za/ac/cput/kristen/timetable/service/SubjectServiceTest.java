@@ -30,7 +30,7 @@ public class SubjectServiceTest extends AbstractTestNGSpringContextTests
 
     private String code;
 
-    @Autowired
+    /*@Autowired
     private SubjectRepository repository;
     private List<Lesson> lessons;
 
@@ -67,5 +67,5 @@ public class SubjectServiceTest extends AbstractTestNGSpringContextTests
     public void cleanUp() throws Exception
     {
         repository.deleteAll();
-    }
+    }*/
 }
