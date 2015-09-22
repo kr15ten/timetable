@@ -1,4 +1,4 @@
-package timetable.api;
+package za.ac.cput.kristen.timetable.api;
 
 import za.ac.cput.kristen.timetable.domain.Student;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/")
 public class LandingPage {
--    @RequestMapping(method = RequestMethod.GET)		
--    public Student getStudent(){		
--        Student stud = new Student.Builder("Kristen", "Hide")		
--                .creditsEarned(40)		
--                .build();		
--        return stud;		
--    }
+    @RequestMapping(method = RequestMethod.GET)
+    public Student getStudent(){
+        Student stud = new Student.Builder("Kristen", "Hide")
+                .creditsEarned(40)
+                .build();
+        return stud;
+    }
 }
