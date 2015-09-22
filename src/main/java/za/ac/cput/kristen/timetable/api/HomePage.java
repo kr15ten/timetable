@@ -20,21 +20,14 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/api/**")
 public class HomePage
 {
     @Autowired
     private ClassService classService;
     @Autowired
     private LecturerService lecturerService;
-
-    @RequestMapping(method = RequestMethod.GET)
-    public Student getStudent(){
-        Student stud = new Student.Builder("Kristen", "Hide")
-                .creditsEarned(40)
-                .build();
-        return stud;
-    }
+    
 
     @RequestMapping(value = "home", method = RequestMethod.GET)
     public String Index()
