@@ -33,11 +33,11 @@ public class StudentPage
     private CourseService courseService;
 
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+/*    @RequestMapping(value = "", method = RequestMethod.GET)
     public String Index()
     {
         return "Visit student details";
-    }
+    }*/
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public StudentResource getStudent(@PathVariable Long id)
