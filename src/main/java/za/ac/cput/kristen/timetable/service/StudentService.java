@@ -10,9 +10,13 @@ import java.util.List;
  */
 public interface StudentService
 {
+    Boolean isStudentExisting(Student stud);
+
     List<Student> getStudents();
 
     Student getStudent(Long id);
 
     String getCoursecode(Long id);
+
+    Student save(Student student);
 }

@@ -19,6 +19,16 @@ public class StudentServiceImpl implements StudentService
     @Autowired
     StudentRepository repository;
 
+    @Override
+    public Boolean isStudentExisting(Student stud) {
+        Student existing = repository.findOne(stud.getStudNo());
+
+        if (existing != null)
+            return true;
+
+        return false;
+    }
+
     public List<Student> getStudents()
     {
         List<Student> allStudents = new ArrayList<Student>();
@@ -41,5 +51,12 @@ public class StudentServiceImpl implements StudentService
     @Override
     public String getCoursecode(Long id) {
         return repository.findOne(id).getCourseCode();
+    }
+
+    @Override
+    public Student save(Student student) {
+        repository.save(student);
+
+        return student;
     }
 }

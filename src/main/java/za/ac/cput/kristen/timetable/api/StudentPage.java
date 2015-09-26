@@ -2,10 +2,11 @@ package za.ac.cput.kristen.timetable.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import za.ac.cput.kristen.timetable.domain.Course;
 import za.ac.cput.kristen.timetable.domain.Student;
 import za.ac.cput.kristen.timetable.domain.Subject;
@@ -60,6 +61,20 @@ public class StudentPage
 
         //return service.getStudent(id);
         return hateoas;
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public ResponseEntity<Void> createStudent(@RequestBody Student student, UriComponentsBuilder ucBuilder){
+        if (service.isStudentExisting(student))
+        {
+            return new ResponseEntity<Void>(HttpStatus.CONFLICT);
+        }
+
+        service.save(student);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(ucBuilder.path("/{id}").buildAndExpand(student.getStudNo()).toUri());
+        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/course/{id}", method = RequestMethod.GET)
