@@ -24,7 +24,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("api/student/**")
+@RequestMapping("api/**")
 public class StudentPage
 {
     @Autowired
@@ -32,14 +32,38 @@ public class StudentPage
     @Autowired
     private CourseService courseService;
 
+    @RequestMapping(value = "/students/", method = RequestMethod.GET)
+    public List<StudentResource> getStudents()
+    {
+        List<StudentResource> hateoas = new ArrayList<>();
+        List<Student> students = service.getStudents();
 
-/*    @RequestMapping(value = "", method = RequestMethod.GET)
+        for(Student student: students)
+        {
+            StudentResource res = new StudentResource
+                    .Builder(student.getName(), student.getSurname())
+                    .courseCode(student.getCourseCode())
+                    .courseYear(student.getCourseYear())
+                    .build();
+
+            Link studentsLink = new
+                    Link("http://localhost:8080/api/student/" + res.getStudNo().toString())
+                    .withRel("students");
+
+            res.add(studentsLink);
+            hateoas.add(res);
+        }
+        //return courseService.getSubjects(service.getCoursecode(id));
+
+        return hateoas;
+    }
+    /*@RequestMapping(value = "", method = RequestMethod.GET)
     public String Index()
     {
         return "Visit student details";
     }*/
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/student/{id}", method = RequestMethod.GET)
     public StudentResource getStudent(@PathVariable Long id)
     {
         StudentResource hateoas;
@@ -63,7 +87,7 @@ public class StudentPage
         return hateoas;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/student/create", method = RequestMethod.POST)
     public ResponseEntity<Void> createStudent(@RequestBody Student student, UriComponentsBuilder ucBuilder){
         if (service.isStudentExisting(student))
         {
@@ -77,7 +101,7 @@ public class StudentPage
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/course/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/student/course/{id}", method = RequestMethod.GET)
     public CourseResource getCourse(@PathVariable Long id)
     {
         CourseResource hateoas;
@@ -103,7 +127,7 @@ public class StudentPage
         return hateoas;
     }
 
-    @RequestMapping(value = "/subjects/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/student/subjects/{id}", method = RequestMethod.GET)
     public List<SubjectResource> getSubjects(@PathVariable Long id)
     {
         List<SubjectResource> hateoas = new ArrayList<>();
