@@ -47,7 +47,7 @@ public class StudentPage
                     .build();
 
             Link studentsLink = new
-                    Link("http://localhost:8080/api/student/" + res.getStudNo().toString())
+                    Link("http://localhost:8080/api/students/" + res.getStudNo().toString())
                     .withRel("students");
 
             res.add(studentsLink);
